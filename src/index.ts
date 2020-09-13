@@ -4,8 +4,8 @@ const app = express();
 const port = 3000;
 
 // Connect to MongoDB
-const dbURI =
-  'mongodb+srv://martin:Test12345@cluster0.0gbrd.mongodb.net/sample_sensors?retryWrites=true&w=majority';
+const dbURI = 'mongodb+srv://martin:Test12345@cluster0.0gbrd.mongodb.net/sample_sensors?retryWrites=true&w=majority';
+
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => console.log(result))
