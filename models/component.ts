@@ -7,18 +7,31 @@ const componentSchema = new Schema(
       type: String,
       required: true,
     },
-    type: {
+    size: {
+      type: Number,
+    },
+    design: {
       type: String,
-      required: true,
+    },
+    revisionDate: {
+      type: Date,
+    },
+    remarks: {
+      type: String,
+    },
+    description: {
+      type: String,
     },
     data: {
+      // Object holding component data (lambda, failure rate, etc)
       type: Array,
+      required: true,
     },
   },
   { timestamps: true }
 );
 
 // Create a model based on the schema we just made
-const Component = mongoose.model('Sensor', componentSchema);
+const Component = mongoose.model('Component', componentSchema);
 
 module.exports = Component;

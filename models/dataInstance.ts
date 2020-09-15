@@ -3,22 +3,38 @@ const Schema = mongoose.Schema;
 
 const dataInstanceSchema = new Schema(
   {
-    name: {
+    companyId: {
       type: String,
+    },
+    equipmentGroup: {
+      type: String,
+    },
+    componentId: {
+      type: String,
+    },
+    facility: {
+      type: String,
+    },
+    period: {
+      startDate: { type: Date },
+      endDate: { type: Date },
+    },
+    T: {
+      type: Number,
       required: true,
     },
-    type: {
-      type: String,
+    du: {
+      type: Number,
       required: true,
     },
-    data: {
-      type: Array,
+    populationSize: {
+      type: Number,
     },
   },
   { timestamps: true }
 );
 
 // Create a model based on the schema we just made
-const DataInstance = mongoose.model('dataInstance', dataInstanceSchema);
+const DataInstance = mongoose.model('DataInstance', dataInstanceSchema);
 
 module.exports = DataInstance;
