@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const userGroupSchema = new Schema({
   type: {
     type: String,
+    required: true,
   },
   hasAccessToVendor: {
     type: Boolean,

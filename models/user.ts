@@ -9,7 +9,6 @@ const userSchema = new Schema({
   },
   passwordHash: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
@@ -19,12 +18,10 @@ const userSchema = new Schema({
     type: String,
   },
   companyId: {
-    // Foreign key to company
     type: Schema.Types.ObjectId,
     ref: 'Company',
   },
   userGroupId: {
-    // Foreign key to corresponding user group
     type: Schema.Types.ObjectId,
     ref: 'UserGroup',
     required: true,
