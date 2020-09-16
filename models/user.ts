@@ -5,6 +5,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   passwordHash: {
     type: String,
@@ -21,11 +22,11 @@ const userSchema = new Schema({
     // Foreign key to company
     type: Schema.Types.ObjectId,
     ref: 'Company',
-    required: true,
   },
   userGroupId: {
     // Foreign key to corresponding user group
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'UserGroup',
     required: true,
   },
 });

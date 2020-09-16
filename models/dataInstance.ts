@@ -3,15 +3,6 @@ const Schema = mongoose.Schema;
 
 const dataInstanceSchema = new Schema(
   {
-    companyId: {
-      type: String,
-    },
-    equipmentGroup: {
-      type: String,
-    },
-    componentId: {
-      type: String,
-    },
     facility: {
       type: String,
     },
@@ -29,6 +20,18 @@ const dataInstanceSchema = new Schema(
     },
     populationSize: {
       type: Number,
+    },
+    companyId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Company',
+      required: true,
+      unique: true,
+    },
+    componentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Component',
+      required: true,
+      unique: true,
     },
   },
   { timestamps: true }

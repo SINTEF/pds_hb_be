@@ -23,10 +23,25 @@ const componentSchema = new Schema(
       type: String,
     },
     data: {
-      // Object holding component data (lambda, failure rate, etc)
       type: Array,
       required: true,
     },
+    module: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    equipmentGroup: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    dataInstanceIds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'DataInstance',
+      },
+    ],
   },
   { timestamps: true }
 );
