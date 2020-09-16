@@ -19,7 +19,8 @@ const userSchema = new Schema({
   },
   companyId: {
     // Foreign key to company
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Company',
     required: true,
   },
   userGroupId: {
