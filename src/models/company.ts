@@ -28,4 +28,4 @@ const companySchema = new Schema({
 
 const DataInstance = mongoose.model('CompanySchema', companySchema);
 
-module.exports = DataInstance;
+export default DataInstance;
