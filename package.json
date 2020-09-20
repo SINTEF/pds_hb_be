@@ -4,17 +4,18 @@
   "description": "Playground for the backend boys",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "nodemon src/server.ts",
     "test": "jest --passWithNoTests",
     "lint:fix": "npm run lint -- --fix",
     "lint": "eslint src/**/*.ts ",
-    "format": "npx prettier --write .",
-    "format:check": "npx prettier --check .",
-    "fix": "npm run format && npm run lint"
+    "format:fix": "npx prettier --write .",
+    "format": "npx prettier --check .",
+    "fix": "npm run format:fix && npm run lint:fix",
+    "check": "npm run format && npm run lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:check && npm run lint"
+      "pre-commit": "npm run check"
     }
   },
   "lint-staged": {
