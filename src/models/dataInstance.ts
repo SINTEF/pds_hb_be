@@ -37,7 +37,6 @@ const dataInstanceSchema = new Schema(
   { timestamps: true }
 );
 
-// Create a model based on the schema we just made
 const DataInstance = mongoose.model('DataInstance', dataInstanceSchema);
 
-module.exports = DataInstance;
+export default DataInstance;

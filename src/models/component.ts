@@ -46,7 +46,6 @@ const componentSchema = new Schema(
   { timestamps: true }
 );
 
-// Create a model based on the schema we just made
 const Component = mongoose.model('Component', componentSchema);
 
-module.exports = Component;
+export default Component;
