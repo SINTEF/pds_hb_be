@@ -1,26 +1,23 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import homeRoutes from './routes/homeRoutes';
+import homeRoutes from './routes/home.routes';
+import userRoutes from './routes/user.routes';
+import db from './db';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to MongoDB
-// const dbURI = 'mongodb+srv://martin:Test12345@cluster0.0gbrd.mongodb.net/sample_sensors?retryWrites=true&w=majority';
+// // Connect to MongoDB
+db.connect();
 
-// mongoose
-//   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then((result) => console.log(result))
-//   .catch((err) => console.log(err));
+// Bodyparser (now inlcuded in express)
+app.use(express.json());
 
-// Bodyparser
-app.use(express.urlencoded({ extended: false }));
-
-// Homepage Routes
+// Routes
 app.use('/', homeRoutes);
+app.use('/user', userRoutes);
 
 // 404
 app.use((req, res) => {
-  res.send('ERROR 404');
+  res.status(404).send('404 Page does not exist');
 });
 
 // start the Express server

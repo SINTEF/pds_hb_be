@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import { Schema } from 'mongoose';
 
-const userSchema = new Schema({
+export const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -9,25 +8,27 @@ const userSchema = new Schema({
   },
   passwordHash: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   phoneNo: {
     type: String,
+    unique: true,
   },
   companyId: {
     type: Schema.Types.ObjectId,
     ref: 'Company',
   },
   userGroupId: {
-    type: Schema.Types.ObjectId,
+    //type: Schema.Types.ObjectId,
+    type: String,
     ref: 'UserGroup',
     required: true,
   },
 });
 
-const User = mongoose.model('User', userSchema);
-
-export default User;
+//UserSchema.statics.
