@@ -17,7 +17,7 @@ export const UserSchema = new Schema({
   },
   phoneNo: {
     type: String,
-    //unique: true
+    unique: true,
   },
   companyId: {
     type: Schema.Types.ObjectId,
