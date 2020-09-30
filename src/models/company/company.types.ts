@@ -6,7 +6,7 @@ export interface ICompany {
   email?: string;
   phoneNr?: string;
   description?: string;
-  facility?: Array<string>;
+  facilities?: Array<string>;
   componentIds?: Array<Schema.Types.ObjectId>;
   employeeIds?: Array<Schema.Types.ObjectId>;
   dataInstanceIds?: Array<Schema.Types.ObjectId>;

@@ -1,5 +1,9 @@
 import { Document, Schema } from 'mongoose';
 
+interface IData { // Temp. empty. Will add more
+
+}
+
 export interface IComponent {
   name: string;
   size?: number;
@@ -7,7 +11,7 @@ export interface IComponent {
   revisionDate?: Date;
   remarks?: string;
   description?: string;
-  data: Array<any>; // should be array, but which type?
+  data: IData; // should be array, but which type?
   module: string;
   equipmentGroup: string;
   dataInstanceIds?: Schema.Types.ObjectId;
