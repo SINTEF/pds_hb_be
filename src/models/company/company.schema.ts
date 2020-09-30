@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const companySchema = new Schema({
+export const CompanySchema = new Schema({
   organizationNr: {
     type: String,
     required: true,
@@ -19,13 +19,9 @@ const companySchema = new Schema({
   description: {
     type: String,
   },
-  facility: [{ type: String }],
+  facilities: [{ type: String }],
   componentIds: [{ type: Schema.Types.ObjectId, ref: 'Component' }],
   employeeIds: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
   dataInstanceIds: [{ type: Schema.Types.ObjectId, ref: 'DataInstance' }],
   created: { type: Date, default: Date.now },
 });
-
-const DataInstance = mongoose.model('CompanySchema', companySchema);
-
-export default DataInstance;
