@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const componentSchema = new Schema(
+export const ComponentSchema = new Schema(
   {
     name: {
       type: String,
@@ -42,10 +42,7 @@ const componentSchema = new Schema(
         ref: 'DataInstance',
       },
     ],
+    created: { type: Date, default: Date.now },
   },
-  { timestamps: true }
 );
 
-const Component = mongoose.model('Component', componentSchema);
-
-export default Component;

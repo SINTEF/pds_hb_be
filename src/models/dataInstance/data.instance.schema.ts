@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const dataInstanceSchema = new Schema(
+export const DataInstanceSchema = new Schema(
   {
     facility: {
       type: String,
@@ -33,10 +33,8 @@ const dataInstanceSchema = new Schema(
       required: true,
       unique: true,
     },
+    created: { type: Date, default: Date.now},
   },
-  { timestamps: true }
 );
 
-const DataInstance = mongoose.model('DataInstance', dataInstanceSchema);
 
-export default DataInstance;

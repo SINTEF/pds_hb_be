@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const userGroupSchema = new Schema({
+export const UserGroupSchema = new Schema({
   type: {
     type: String,
     required: true,
@@ -20,6 +20,4 @@ const userGroupSchema = new Schema({
   },
 });
 
-const UserGroup = mongoose.model('UserGroup', userGroupSchema);
 
-export default UserGroup;
