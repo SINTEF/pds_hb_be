@@ -19,5 +19,3 @@ export const UserGroupSchema = new Schema({
     required: true,
   },
 });
-
-

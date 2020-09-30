@@ -25,5 +25,3 @@ export const CompanySchema = new Schema({
   dataInstanceIds: [{ type: Schema.Types.ObjectId, ref: 'DataInstance' }],
   created: { type: Date, default: Date.now },
 });
-
-

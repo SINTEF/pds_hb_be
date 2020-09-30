@@ -1,10 +1,10 @@
 import { Document } from 'mongoose';
 
 export interface IUserGroup {
-    type?: string;
-    hasAccessToVendor?: boolean;
-    hasAccessToOperator?: boolean;
-    hasAccessToAdmin?: boolean;
-  }
+  type?: string;
+  hasAccessToVendor?: boolean;
+  hasAccessToOperator?: boolean;
+  hasAccessToAdmin?: boolean;
+}
 
-  export interface IUserGroupDocument extends IUserGroup, Document {}
+export interface IUserGroupDocument extends IUserGroup, Document {}
