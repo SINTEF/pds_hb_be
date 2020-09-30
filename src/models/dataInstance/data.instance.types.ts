@@ -1,8 +1,8 @@
 import { Document, Schema } from 'mongoose';
 
 interface IPeriod {
-  startDate: Date,
-  endDate: Date,
+  startDate: Date;
+  endDate: Date;
 }
 
 export interface IDataInstance {
