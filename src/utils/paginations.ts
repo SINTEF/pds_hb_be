@@ -24,7 +24,7 @@ interface IResult {
 export const paginatedResults = (model: mongoose.Model<TModel>) => {
   return async (req: express.Request, res: express.Response): Promise<void> => {
     const page = Number(req.query.page);
-    const limit = Number(req.query.limit) || 5;
+    const limit = Number(req.query.limit) || 10;
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
