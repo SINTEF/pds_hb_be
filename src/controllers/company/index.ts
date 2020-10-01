@@ -1,8 +1,7 @@
 import registerCompany from './company.register';
 
 const companyController = {
-    registerCompany
+  registerCompany,
 };
 
 export default companyController;
-
