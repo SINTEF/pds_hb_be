@@ -7,6 +7,13 @@ import { IUserDocument } from '../../models/user/user.types';
 const login = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
   const { username, password } = req.body;
+  if (!username || !password) {
+    res.status(400).send({
+      success: false,
+      message: 'Required fields missing',
+    });
+    return;
+  }
 
   const userQuery = username && { username: username.toLowerCase() };
 
