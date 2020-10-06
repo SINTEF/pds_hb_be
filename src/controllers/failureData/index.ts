@@ -1,4 +1,4 @@
-import register from './failure.data.register';
+import register from './failureData.register';
 
 const failureDataController = {
   register,
