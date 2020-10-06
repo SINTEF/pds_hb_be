@@ -11,6 +11,7 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
       success: false,
       message: 'Missing required fields.',
     });
+    return
   }
 
   const passwordHash = await bcrypt.hash(password, 10).catch(() =>
