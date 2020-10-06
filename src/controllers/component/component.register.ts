@@ -3,46 +3,45 @@ import db from '../../db';
 import { ComponentModel } from '../../models';
 
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
-    db.connect();
+  db.connect();
 
-    const { name, size, design, revisionDate, remarks, description, data, module, equipmentGroup } = req.body;
+  const { name, size, design, revisionDate, remarks, description, data, module, equipmentGroup } = req.body;
 
-    if (!name || !data || !module || !equipmentGroup) {
-        res.status(400).send({
-           success: false,
-           message: 'Required fields missing'
-        });
-        return
-    }
-
-    const newComponent = new ComponentModel({
-        name,
-        size,
-        design,
-        revisionDate,
-        remarks,
-        description,
-        data,
-        module,
-        equipmentGroup,
+  if (!name || !data || !module || !equipmentGroup) {
+    res.status(400).send({
+      success: false,
+      message: 'Required fields missing',
     });
+    return;
+  }
 
-    newComponent
-        .save()
-        .then(() =>
-            res.status(200).send({
-                success: true,
-                message: 'Component successfully created'
-            })
-        )
-        .catch((err) => 
-        res.status(409).send({
-            success: false,
-            message: 'Something went wront when trying to register a new component',
-            duplicateField: err.keyValue,
-            })
-        );
+  const newComponent = new ComponentModel({
+    name,
+    size,
+    design,
+    revisionDate,
+    remarks,
+    description,
+    data,
+    module,
+    equipmentGroup,
+  });
 
-}
+  newComponent
+    .save()
+    .then(() =>
+      res.status(200).send({
+        success: true,
+        message: 'Component successfully created',
+      })
+    )
+    .catch((err) =>
+      res.status(409).send({
+        success: false,
+        message: 'Something went wront when trying to register a new component',
+        duplicateField: err.keyValue,
+      })
+    );
+};
 
-export default register
+export default register;

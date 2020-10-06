@@ -11,7 +11,7 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
       success: false,
       message: 'Missing required fields',
     });
-    return
+    return;
   }
 
   const newCompany = new CompanyModel({

@@ -12,7 +12,7 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
       success: false,
       message: 'Required fields missing',
     });
-    return
+    return;
   }
 
   const userQuery = username && { username: username.toLowerCase() };
