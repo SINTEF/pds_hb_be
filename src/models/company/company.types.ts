@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface ICompany {
   organizationNr: string;
@@ -7,9 +7,6 @@ export interface ICompany {
   phoneNr?: string;
   description?: string;
   facilities?: Array<string>;
-  componentIds?: Array<Schema.Types.ObjectId>;
-  employeeIds?: Array<Schema.Types.ObjectId>;
-  dataInstanceIds?: Array<Schema.Types.ObjectId>;
   created?: Date;
 }
 
