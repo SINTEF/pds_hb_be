@@ -1,5 +1,5 @@
 import express from 'express';
-import failureDataController from '../controllers/failureData/';
+import failureDataController from '../controllers/failureData';
 
 const router = express.Router();
 

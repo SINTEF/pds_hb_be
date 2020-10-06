@@ -11,6 +11,7 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
       success: false,
       message: 'Missing required fields',
     });
+    return;
   }
 
   const newDataInstance = new DataInstanceModel({
@@ -35,7 +36,6 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
         success: false,
         message: 'Something went wrong when creating data instance.',
         duplicateField: err.keyValue,
-        err,
       })
     );
 };
