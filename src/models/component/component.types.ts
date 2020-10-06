@@ -1,7 +1,7 @@
 import { Document, Schema } from 'mongoose';
 
 interface IData {
-  // Temp. empty. Will add more
+  lambda: number;
 }
 
 export interface IComponent {

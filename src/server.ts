@@ -1,6 +1,7 @@
 import express from 'express';
 import homeRoutes from './routes/home.routes';
 import userRoutes from './routes/user.routes';
+import companyRoutes from './routes/company.routes';
 import db from './db';
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ app.use(express.json());
 // Routes
 app.use('/', homeRoutes);
 app.use('/user', userRoutes);
+app.use('/company', companyRoutes);
 
 // 404
 app.use((req, res) => {
