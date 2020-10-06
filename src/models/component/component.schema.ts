@@ -35,11 +35,5 @@ export const ComponentSchema = new Schema({
     required: true,
     unique: true,
   },
-  dataInstanceIds: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'DataInstance',
-    },
-  ],
   created: { type: Date, default: Date.now },
 });

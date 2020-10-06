@@ -20,8 +20,5 @@ export const CompanySchema = new Schema({
     type: String,
   },
   facilities: [{ type: String }],
-  componentIds: [{ type: Schema.Types.ObjectId, ref: 'Component' }],
-  employeeIds: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
-  dataInstanceIds: [{ type: Schema.Types.ObjectId, ref: 'DataInstance' }],
   created: { type: Date, default: Date.now },
 });

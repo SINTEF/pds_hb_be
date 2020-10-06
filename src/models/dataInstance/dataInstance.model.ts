@@ -1,5 +1,5 @@
 import { model } from 'mongoose';
-import { IDataInstanceDocument } from './data.instance.types';
-import { DataInstanceSchema } from './data.instance.schema';
+import { IDataInstanceDocument } from './dataInstance.types';
+import { DataInstanceSchema } from './dataInstance.schema';
 
 export const DataInstanceModel = model<IDataInstanceDocument>('dataInstance', DataInstanceSchema);

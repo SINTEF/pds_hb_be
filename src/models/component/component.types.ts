@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose';
+import { Document } from 'mongoose';
 
 interface IData {
   lambda: number;
@@ -14,7 +14,6 @@ export interface IComponent {
   data: IData; // should be array, but which type?
   module: string;
   equipmentGroup: string;
-  dataInstanceIds?: Schema.Types.ObjectId;
   created?: Date;
 }
 
