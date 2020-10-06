@@ -1,7 +1,7 @@
-import registerCompany from './company.register';
+import register from './company.register';
 
 const companyController = {
-  registerCompany,
+  register,
 };
 
 export default companyController;

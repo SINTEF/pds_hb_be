@@ -3,7 +3,6 @@ import companyController from '../controllers/company/';
 
 const router = express.Router();
 
-// proposement for changing to this convention
-router.post('/register', companyController.registerCompany);
+router.post('/register', companyController.register);
 
 export default router;
