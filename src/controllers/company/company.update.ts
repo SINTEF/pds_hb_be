@@ -18,12 +18,12 @@ const update = async (req: express.Request, res: express.Response): Promise<void
   await CompanyModel.findOneAndUpdate(
     { _id: obj_id },
     {
-        organizationNr: organizationNr,
-        name: name,
-        email: email,
-        phoneNr: phoneNr,
-        description: description,
-        facilities: facilities,
+      organizationNr: organizationNr,
+      name: name,
+      email: email,
+      phoneNr: phoneNr,
+      description: description,
+      facilities: facilities,
     },
     { useFindAndModify: false }
   )
