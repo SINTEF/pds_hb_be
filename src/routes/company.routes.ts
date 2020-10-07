@@ -3,7 +3,7 @@ import companyController from '../controllers/company/';
 
 const router = express.Router();
 
-router.post('', companyController.register);
-router.put('', companyController.update);
+router.post('/', companyController.register);
+router.put('/', companyController.update);
 
 export default router;
