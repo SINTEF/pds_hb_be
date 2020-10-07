@@ -4,7 +4,7 @@ export interface IUser {
   username: string;
   passwordHash: string;
   email: string;
-  phoneNo?: string;
+  phoneNr?: string;
   companyId?: Schema.Types.ObjectId;
   userGroupId: string;
 }
