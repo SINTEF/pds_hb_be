@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 
 interface IData {
   lambda: number;
@@ -17,4 +17,4 @@ export interface IComponent {
   created?: Date;
 }
 
-export interface IComponentDocument extends IComponent, Document {}
+export interface IComponentDocument extends IComponent, Document, Schema {}
