@@ -3,7 +3,7 @@ import componentController from '../controllers/component/';
 
 const router = express.Router();
 
-router.post('/register', componentController.register);
-router.put('/update', componentController.update);
+router.post('', componentController.register);
+router.put('', componentController.update);
 
 export default router;
