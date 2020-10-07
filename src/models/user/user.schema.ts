@@ -15,7 +15,7 @@ export const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  phoneNo: {
+  phoneNr: {
     type: String,
     unique: true,
   },
