@@ -5,7 +5,7 @@ import { UserModel } from '../../models';
 
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
-  const { username, password, email, userGroupId } = req.body;
+  const { username, password, email, phoneNr, companyId, userGroupId } = req.body;
   if (!username || !password || !email || !userGroupId) {
     res.status(400).send({
       success: false,
@@ -26,6 +26,8 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     username: username.toLowerCase(),
     passwordHash,
     email,
+    phoneNr,
+    companyId,
     userGroupId,
   });
 

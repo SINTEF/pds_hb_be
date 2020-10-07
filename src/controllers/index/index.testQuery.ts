@@ -13,8 +13,9 @@ const testQuery = async (req: express.Request, res: express.Response): Promise<v
   // Query
   console.log(req.query);
 
-  UserModel.find({ ...testQuery }, (err, result) => {
+  UserModel.find({}, (err, result) => {
     if (err) throw err;
+    console.log('PRINTING ALL USERS:');
     console.log(result);
     res.send('WORKED');
   });

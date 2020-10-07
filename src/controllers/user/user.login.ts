@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import db from '../../db';
 import { UserModel } from '../../models';
 import { IUserDocument } from '../../models/user/user.types';
+import { issueJWT } from '../../utils/issueJWT';
 
 const login = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
@@ -43,9 +44,19 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
     })
   );
 
-  res.status(authorized ? 200 : 400).send({
-    success: authorized,
-    message: authorized ? 'User authorized' : 'Wrong password',
+  if (!authorized)
+    res.status(400).send({
+      success: false,
+      message: 'Wrong password',
+    });
+
+  // IF SUCCESS:
+  const { token, expiresIn } = issueJWT(user);
+  res.status(200).send({
+    success: true,
+    message: 'User authorized',
+    token,
+    expiresIn,
   });
 };
 

@@ -1,68 +1,24 @@
 import passport from 'passport';
-import passportLocal from 'passport-local';
-
-// import { User, UserType } from '../models/User';
+import { Strategy, ExtractJwt } from 'passport-jwt';
 import { UserModel } from '../models';
-//import { Request, Response, NextFunction } from "express";
+import path from 'path';
+import dotenv from 'dotenv';
 
-const LocalStrategy = passportLocal.Strategy;
+dotenv.config({ path: path.resolve(__dirname, './.env') });
 
-passport.serializeUser<any, any>((UserModel, done) => {
-  done(undefined, UserModel.id);
-});
+const options = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.SECRET_KEY,
+  //algorithms: ['HS256'],
+  //ignoreExpiration: false,
+};
 
-passport.deserializeUser((id, done) => {
-  UserModel.findById(id, (err, user) => {
-    done(err, user);
-  });
-});
-
-/*
- * Sign in using Email and Password.
- */
 passport.use(
-  new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-    UserModel.findOne({ email: email.toLowerCase() }, (err, user: any) => {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(undefined, false, { message: `Email ${email} not found.` });
-      }
-      user.comparePassword(password, (err: Error, isMatch: boolean) => {
-        if (err) {
-          return done(err);
-        }
-        if (isMatch) {
-          return done(undefined, user);
-        }
-        return done(undefined, false, { message: 'Invalid email or password.' });
-      });
+  new Strategy(options, (jwt_payload, done) => {
+    UserModel.findOne({ _id: jwt_payload.sub }, function (err, user) {
+      if (err) return done(err, false);
+      if (!user) return done(null, false); // || Date.now() - jwt_payload.iat > 20000
+      return done(null, user);
     });
   })
 );
-
-/**
- * Login Required middleware.
- */
-
-// export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-//   if (req.isAuthenticated()) {
-//       return next();
-//   }
-//   res.redirect("/login");
-// };
-
-/**
- * Authorization Required middleware.
- */
-// export const isAuthorized = (req: Request, res: Response, next: NextFunction) => {
-//   const provider = req.path.split("/").slice(-1)[0];
-
-//   const user = req.user as UserDocument;
-//   if (_.find(user.tokens, { kind: provider })) {
-//       next();
-//   } else {
-//       res.redirect(`/auth/${provider}`);
-//   }
-// };
