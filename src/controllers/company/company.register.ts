@@ -6,7 +6,7 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
   db.connect();
 
   const { organizationNr, name, email, phoneNr, description, facilities } = req.body;
-  if (!organizationNr || !name) {
+  if (!organizationNr || !name || !email) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',

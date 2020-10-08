@@ -1,7 +1,9 @@
 import { Document } from 'mongoose';
 
 export interface IDataInstance {
-  facility?: string;
+  company: string;
+  facility: string;
+  component: string;
   startPeriod?: Date;
   endPeriod?: Date;
   T: number;

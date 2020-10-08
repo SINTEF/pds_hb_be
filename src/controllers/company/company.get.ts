@@ -5,11 +5,14 @@ import { CompanyModel } from '../../models';
 const get = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  const { objectId } = req.params;
+  const name = req.params.name;
 
-  CompanyModel.findOne({ objectId })
+  CompanyModel.findOne({ name })
     .then((company) => {
-      return company;
+      res.status(200).send({
+        success: true,
+        payload: company,
+      });
     })
     .catch(() =>
       res.status(404).send({
