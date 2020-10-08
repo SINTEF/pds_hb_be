@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 // // Connect to MongoDB
 db.connect();
 
-// Bodyparser (now inlcuded in express)
+// Bodyparser (now included in express)
 app.use(express.json());
 
 // Initialize jwt session with passport
