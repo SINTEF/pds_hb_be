@@ -1,17 +1,17 @@
 import express from 'express';
 import db from '../../db';
-import { CompanyModel } from '../../models';
+import { DataInstanceModel } from '../../models';
 
 const get = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  const name = req.params.name;
+  const _id = req.params._id;
 
-  CompanyModel.findOne({ name })
-    .then((company) => {
+  DataInstanceModel.findOne({ _id })
+    .then((dataInstance) => {
       res.status(200).send({
         success: true,
-        payload: company,
+        payload: dataInstance,
       });
     })
     .catch((err) =>
