@@ -5,8 +5,8 @@ import { DataInstanceModel } from '../../models';
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  const { facility, startPeriod, endPeriod, T, du, populationSize } = req.body;
-  if (!T || !du) {
+  const { company, facility, component, startPeriod, endPeriod, T, du, populationSize } = req.body;
+  if (!company || !facility || !component || !T || !du) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -15,7 +15,9 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
   }
 
   const newDataInstance = new DataInstanceModel({
+    company,
     facility,
+    component,
     startPeriod,
     endPeriod,
     T,

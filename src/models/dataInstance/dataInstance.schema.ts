@@ -2,8 +2,17 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const DataInstanceSchema = new Schema({
+  company: {
+    type: String,
+    required: true,
+  },
   facility: {
     type: String,
+    required: true,
+  },
+  component: {
+    type: String,
+    required: true,
   },
   startDate: {
     type: Date,
