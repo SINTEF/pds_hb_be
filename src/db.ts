@@ -1,15 +1,18 @@
 import Mongoose from 'mongoose';
-import key from './config/keys';
-//import { UserModel } from "./users/users.model";
+import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: path.resolve(__dirname, './config/.env') });
 
 let database: Mongoose.Connection;
 
 const connect = (): void => {
-  // Only make new connection if a connection doesn't exist
   if (database) return;
 
-  const uri = key.mongoURI;
-  Mongoose.connect(uri, {
+  const mongoURI = process.env.mongoURI;
+  if (!mongoURI) throw Error('Cannot find mongo URI environment variable');
+
+  Mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useFindAndModify: true,
     useUnifiedTopology: true,

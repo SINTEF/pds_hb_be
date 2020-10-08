@@ -1,5 +1,5 @@
 import express from 'express';
-import homeRoutes from './routes/home.routes';
+import homeRoutes from './routes/index.routes';
 import userRoutes from './routes/user.routes';
 import companyRoutes from './routes/company.routes';
 import dataInstanceRoutes from './routes/dataInstance.routes';
@@ -13,6 +13,9 @@ db.connect();
 
 // Bodyparser (now inlcuded in express)
 app.use(express.json());
+
+// Initialize jwt session with passport
+require('./config/passport');
 
 // Routes
 app.use('/', homeRoutes);
