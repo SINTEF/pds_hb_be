@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import homeRoutes from './routes/index.routes';
 import userRoutes from './routes/user.routes';
 import companyRoutes from './routes/company.routes';
@@ -11,9 +12,9 @@ const PORT = process.env.PORT || 3000;
 // // Connect to MongoDB
 db.connect();
 
-// Bodyparser (now included in express)
+// Bodyparser (now inlcuded in express)
 app.use(express.json());
-
+app.use(cors());
 // Initialize jwt session with passport
 require('./config/passport');
 

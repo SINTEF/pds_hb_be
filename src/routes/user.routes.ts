@@ -6,7 +6,7 @@ import { UserModel } from '../models/user/user.model';
 const router = express.Router();
 
 router.post('/register', userController.register);
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 router.put('/update', userController.update);
 
 // Get request to test pagination
