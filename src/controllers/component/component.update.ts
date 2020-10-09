@@ -30,10 +30,11 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     },
     { useFindAndModify: false }
   )
-    .then(() => {
+    .then((component) => {
       res.status(200).send({
         success: true,
-        message: 'Successfully updated the database',
+        message: 'Component successfully updated! Updated company document:',
+        document: component,
       });
     })
     .catch((err) => {

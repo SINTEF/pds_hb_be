@@ -26,7 +26,10 @@ const getOne = async (req: express.Request, res: express.Response): Promise<void
 const getAll = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  DataInstanceModel.find()
+  // company=Equinor&component=flame+detector in URL results in
+  const query = req.query; // query = { company: 'Equinor', component: 'flame detector' }
+
+  DataInstanceModel.find(query)
     .then((dataInstances) => {
       res.status(200).send({
         success: true,

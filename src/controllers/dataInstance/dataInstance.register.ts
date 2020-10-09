@@ -5,7 +5,8 @@ import { DataInstanceModel } from '../../models';
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  const { company, facility, component, startPeriod, endPeriod, T, du, populationSize } = req.body;
+  const { company, facility, component, startDate, endDate, T, du, populationSize } = req.body;
+
   if (!company || !facility || !component || !T || !du) {
     res.status(400).send({
       success: false,
@@ -18,8 +19,8 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     company,
     facility,
     component,
-    startPeriod,
-    endPeriod,
+    startDate,
+    endDate,
     T,
     du,
     populationSize,
@@ -27,10 +28,11 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
 
   newDataInstance
     .save()
-    .then(() =>
+    .then((dataInstance) =>
       res.status(200).send({
         success: true,
-        message: 'Data instance successfully created.',
+        message: 'Data instance successfully created! Data instance document:',
+        document: dataInstance,
       })
     )
     .catch((err) =>

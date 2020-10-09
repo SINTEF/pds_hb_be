@@ -29,10 +29,11 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
 
   newComponent
     .save()
-    .then(() =>
+    .then((component) =>
       res.status(200).send({
         success: true,
-        message: 'Component successfully created',
+        message: 'Component successfully created! Component document:',
+        document: component,
       })
     )
     .catch((err) =>

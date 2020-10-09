@@ -27,10 +27,11 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     },
     { useFindAndModify: false }
   )
-    .then(() => {
+    .then((company) => {
       res.status(200).send({
         success: true,
-        message: 'Successfully updated the database',
+        message: 'Company successfully updated! Updated company document:',
+        document: company,
       });
     })
     .catch((err) => {
