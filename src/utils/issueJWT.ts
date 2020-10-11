@@ -7,28 +7,26 @@ dotenv.config({ path: path.resolve(__dirname, '../config/.env') });
 
 interface Ijsonwebtoken {
   token: string;
-  //expiresIn: string;
+  expiresIn: string;
 }
 
 export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
   const _id = user._id;
   const username = user.username;
   const userGroupId = user.userGroupId;
-  // const expiresIn = '10s'; // TODO: '1d' -> 1 day
+  const expiresIn = '100s'; // TODO: '1d' -> 1 day
   const SECRET_KEY = process.env.SECRET_KEY;
-  if (!SECRET_KEY) throw Error('Could not find key for jwt');
+  if (!SECRET_KEY) throw Error('Could not find key for ');
 
   const payload = {
-    id: _id,
-    iat: Date.now(),
+    sub: _id,
+    iat: Math.floor(Date.now() / 1000),
     username,
     userGroupId,
-    exp: Math.floor(Date.now() / 1000) + 20,
   };
-  // console.log(payload.exp)
-
-  const signedToken = jsonwebtoken.sign(payload, SECRET_KEY);
+  const signedToken = jsonwebtoken.sign(payload, SECRET_KEY, { expiresIn });
   return {
     token: 'Bearer ' + signedToken,
+    expiresIn,
   };
 };

@@ -17,7 +17,6 @@ passport.use(
     UserModel.findOne({ _id: jwt_payload.sub }, function (err, user) {
       if (err) return done(err, false);
       if (!user) return done(null, false);
-      //if (Date.now() - jwt_payload.iat > 1 * 30 * 1000) return done(null, false);
       return done(null, user);
     });
   })
