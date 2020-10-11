@@ -24,7 +24,7 @@ const getAll = async (req: express.Request, res: express.Response): Promise<void
       });
     })
     .catch(() =>
-      res.status(404).send({
+      res.status(400).send({
         success: false,
         message: 'Something wrong with inputs.',
       })
