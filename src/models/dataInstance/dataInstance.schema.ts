@@ -31,5 +31,34 @@ export const DataInstanceSchema = new Schema({
   populationSize: {
     type: Number,
   },
+  L3: {
+    measuringPrinciple: {
+      type: String,
+    },
+    designMountingPrinciple: {
+      type: String,
+    },
+    actuationPrinciple: {
+      type: String,
+    },
+    mediumProperties: {
+      type: String,
+    },
+    dimension: {
+      type: String,
+    },
+    locationEnvironment: {
+      type: String,
+    },
+    application: {
+      type: String,
+    },
+    diagnosticsConfiguration: {
+      type: String,
+    },
+    testMaintenanceMonitoringStrategy: {
+      type: String,
+    },
+  },
   created: { type: Date, default: Date.now },
 });

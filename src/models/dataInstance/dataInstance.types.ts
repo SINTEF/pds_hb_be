@@ -9,6 +9,17 @@ export interface IDataInstance {
   T: number;
   du: number;
   populationSize?: number;
+  L3: {
+    measuringPrinciple?: string;
+    designMountingPrinciple?: string;
+    actuationPrinciple?: string;
+    mediumProperties?: string;
+    dimension?: string;
+    locationEnvironment?: string;
+    application?: string;
+    diagnosticsConfiguration?: string;
+    testMaintenanceMonitoringStrategy?: string;
+  };
   created?: Date;
 }
 
