@@ -11,13 +11,14 @@ const get = async (req: express.Request, res: express.Response): Promise<void> =
     .then((company) => {
       res.status(200).send({
         success: true,
-        payload: company,
+        data: company,
       });
     })
-    .catch(() =>
+    .catch((err) =>
       res.status(404).send({
         success: false,
         message: 'Something wrong with inputs',
+        error: err,
       })
     );
 };

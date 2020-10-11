@@ -5,7 +5,7 @@ import { DataInstanceModel } from '../../models';
 const update = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  const { obj_id, facility, startPeriod, endPeriod, T, du, populationSize } = req.body;
+  const { obj_id, facility, startDate, endDate, T, du, populationSize } = req.body;
 
   if (!T || !du) {
     res.status(400).send({
@@ -19,18 +19,19 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     { _id: obj_id },
     {
       facility: facility,
-      startPeriod: startPeriod,
-      endPeriod: endPeriod,
+      startDate: startDate,
+      endDate: endDate,
       T: T,
       du: du,
       populationSize: populationSize,
     },
     { useFindAndModify: false }
   )
-    .then(() => {
+    .then((dataInstance) => {
       res.status(200).send({
         success: true,
-        message: 'Successfully updated the database',
+        message: 'Data instance successfully updated',
+        data: dataInstance,
       });
     })
     .catch((err) => {
