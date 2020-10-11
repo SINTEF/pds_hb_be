@@ -32,14 +32,14 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     .then((component) =>
       res.status(200).send({
         success: true,
-        message: 'Component successfully created! Component document:',
-        document: component,
+        message: 'Component successfully created',
+        data: component,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wront when trying to register a new component',
+        message: 'Something went wrong when trying to register a new component',
         duplicateField: err.keyValue,
       })
     );

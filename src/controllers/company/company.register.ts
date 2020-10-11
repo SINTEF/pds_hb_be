@@ -28,8 +28,8 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     .then((company) =>
       res.status(200).send({
         success: true,
-        message: 'Company successfully created! Company document:',
-        document: company,
+        message: 'Company successfully created',
+        data: company,
       })
     )
     .catch((err) =>

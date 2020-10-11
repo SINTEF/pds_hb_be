@@ -11,7 +11,7 @@ const getOne = async (req: express.Request, res: express.Response): Promise<void
     .then((dataInstance) => {
       res.status(200).send({
         success: true,
-        payload: dataInstance,
+        data: dataInstance,
       });
     })
     .catch((err) =>
@@ -33,7 +33,7 @@ const getAll = async (req: express.Request, res: express.Response): Promise<void
     .then((dataInstances) => {
       res.status(200).send({
         success: true,
-        payload: dataInstances,
+        data: dataInstances,
       });
     })
     .catch((err) =>

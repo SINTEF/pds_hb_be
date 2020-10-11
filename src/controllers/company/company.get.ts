@@ -11,7 +11,7 @@ const get = async (req: express.Request, res: express.Response): Promise<void> =
     .then((company) => {
       res.status(200).send({
         success: true,
-        payload: company,
+        data: company,
       });
     })
     .catch((err) =>

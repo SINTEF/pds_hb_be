@@ -33,8 +33,8 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     .then((component) => {
       res.status(200).send({
         success: true,
-        message: 'Component successfully updated! Updated company document:',
-        document: component,
+        message: 'Component successfully updated',
+        data: component,
       });
     })
     .catch((err) => {

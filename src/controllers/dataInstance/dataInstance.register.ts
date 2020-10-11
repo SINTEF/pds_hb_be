@@ -31,8 +31,8 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     .then((dataInstance) =>
       res.status(200).send({
         success: true,
-        message: 'Data instance successfully created! Data instance document:',
-        document: dataInstance,
+        message: 'Data instance successfully created',
+        data: dataInstance,
       })
     )
     .catch((err) =>
