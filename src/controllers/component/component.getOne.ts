@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
 
-const get = async (req: express.Request, res: express.Response): Promise<void> => {
+const getOne = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
   const { _id } = req.params;
 
@@ -21,4 +21,4 @@ const get = async (req: express.Request, res: express.Response): Promise<void> =
     );
 };
 
-export default get;
+export default getOne;
