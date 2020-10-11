@@ -51,12 +51,13 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
     });
 
   // IF SUCCESS:
-  const { token, expiresIn } = issueJWT(user);
+  const { token } = issueJWT(user);
   res.status(200).send({
     success: true,
     message: 'User authorized',
+    data: user,
     token,
-    expiresIn,
+    //expiresIn,
   });
 };
 

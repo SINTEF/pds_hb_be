@@ -9,7 +9,6 @@ dotenv.config({ path: path.resolve(__dirname, './.env') });
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.SECRET_KEY,
-  //algorithms: ['HS256'],
   //ignoreExpiration: false,
 };
 
@@ -17,7 +16,8 @@ passport.use(
   new Strategy(options, (jwt_payload, done) => {
     UserModel.findOne({ _id: jwt_payload.sub }, function (err, user) {
       if (err) return done(err, false);
-      if (!user) return done(null, false); // || Date.now() - jwt_payload.iat > 20000
+      if (!user) return done(null, false);
+      //if (Date.now() - jwt_payload.iat > 1 * 30 * 1000) return done(null, false);
       return done(null, user);
     });
   })
