@@ -23,14 +23,14 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
       return user;
     })
     .catch(() =>
-      res.status(404).send({
+      res.status(400).send({
         success: false,
         message: 'Something wrong with inputs',
       })
     )) as IUserDocument | null;
 
   if (!user) {
-    res.status(404).send({
+    res.status(400).send({
       success: false,
       message: 'User not found',
     });
@@ -51,12 +51,13 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
     });
 
   // IF SUCCESS:
-  const { token, expiresIn } = issueJWT(user);
+  const { token } = issueJWT(user);
   res.status(200).send({
     success: true,
     message: 'User authorized',
+    data: user,
     token,
-    expiresIn,
+    //expiresIn,
   });
 };
 
