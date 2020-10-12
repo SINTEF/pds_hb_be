@@ -30,5 +30,3 @@ export const UserSchema = new Schema({
     required: true,
   },
 });
-
-//UserSchema.statics.
