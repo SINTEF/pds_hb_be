@@ -4,9 +4,9 @@ import { ComponentModel } from '../../models';
 
 const getOne = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
-  const { _id } = req.params;
+  const { name } = req.params;
 
-  ComponentModel.findOne({ _id })
+  ComponentModel.findOne({ name })
     .then((component) => {
       res.status(200).send({
         success: true,
