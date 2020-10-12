@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
 
-const update = async (req: express.Request, res: express.Response): Promise<void> => {
+const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { obj_id, name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
@@ -15,7 +15,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     return;
   }
 
-  await ComponentModel.findOneAndUpdate(
+  ComponentModel.findOneAndUpdate(
     { _id: obj_id },
     {
       name: name,
