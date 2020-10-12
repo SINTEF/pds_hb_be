@@ -6,6 +6,14 @@ const getOne = async (req: express.Request, res: express.Response): Promise<void
   db.connect();
   const { name } = req.params;
 
+  if (!name) {
+    res.status(400).send({
+      success: false,
+      message: 'Something wrong with parameters',
+    });
+    return;
+  }
+
   ComponentModel.findOne({ name })
     .then((component) => {
       res.status(200).send({

@@ -45,5 +45,4 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     );
 };
 
-//
 export default register;
