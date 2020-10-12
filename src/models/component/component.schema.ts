@@ -23,51 +23,42 @@ export const ComponentSchema = new Schema({
     type: String,
   },
   L3: {
-    measuringPrinciples: [
-      {
-        type: String,
-      },
-    ],
-    designMountingPrinciple: [
-      {
-        type: String,
-      },
-    ],
-    actuationPrinciple: [
-      {
-        type: String,
-      },
-    ],
-    mediumProperties: [
-      {
-        type: String,
-      },
-    ],
-    dimension: [
-      {
-        type: String,
-      },
-    ],
-    locationEnvironment: [
-      {
-        type: String,
-      },
-    ],
-    application: [
-      {
-        type: String,
-      },
-    ],
-    diagnosticsConfiguration: [
-      {
-        type: String,
-      },
-    ],
-    testMaintenanceMonitoringStrategy: [
-      {
-        type: String,
-      },
-    ],
+    measuringPrinciples: {
+      type: [String],
+      default: undefined,
+    },
+    designMountingPrinciples: {
+      type: [String],
+      default: undefined,
+    },
+    actuationPrinciples: {
+      type: [String],
+      default: undefined,
+    },
+    mediumProperties: {
+      type: [String],
+      default: undefined,
+    },
+    dimensions: {
+      type: [String],
+      default: undefined,
+    },
+    locationEnvironments: {
+      type: [String],
+      default: undefined,
+    },
+    applications: {
+      type: [String],
+      default: undefined,
+    },
+    diagnosticsConfigurations: {
+      type: [String],
+      default: undefined,
+    },
+    testMaintenanceMonitoringStrategies: {
+      type: [String],
+      default: undefined,
+    },
   },
   data: {
     type: Array,
