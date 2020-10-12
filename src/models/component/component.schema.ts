@@ -21,6 +21,53 @@ export const ComponentSchema = new Schema({
   description: {
     type: String,
   },
+  L3: {
+    measuringPrinciples: [
+      {
+        type: String,
+      },
+    ],
+    designMountingPrinciple: [
+      {
+        type: String,
+      },
+    ],
+    actuationPrinciple: [
+      {
+        type: String,
+      },
+    ],
+    mediumProperties: [
+      {
+        type: String,
+      },
+    ],
+    dimension: [
+      {
+        type: String,
+      },
+    ],
+    locationEnvironment: [
+      {
+        type: String,
+      },
+    ],
+    application: [
+      {
+        type: String,
+      },
+    ],
+    diagnosticsConfiguration: [
+      {
+        type: String,
+      },
+    ],
+    testMaintenanceMonitoringStrategy: [
+      {
+        type: String,
+      },
+    ],
+  },
   data: {
     type: Array,
     required: true,
