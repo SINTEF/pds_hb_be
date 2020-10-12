@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
 
-const getOne = async (req: express.Request, res: express.Response): Promise<void> => {
+const getOne = (req: express.Request, res: express.Response): void => {
   db.connect();
   const { name } = req.params;
 

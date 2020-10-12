@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { DataInstanceModel } from '../../models';
 
-const register = async (req: express.Request, res: express.Response): Promise<void> => {
+const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { company, facility, component, startDate, endDate, T, du, populationSize, L3 } = req.body;

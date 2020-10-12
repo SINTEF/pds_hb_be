@@ -3,7 +3,7 @@ import db from '../../db';
 import { ComponentModel } from '../../models';
 
 // Finds all components based on  equipment group
-const getAll = async (req: express.Request, res: express.Response): Promise<void> => {
+const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const equipmentGroup = req.query;

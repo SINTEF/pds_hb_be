@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
 
-const get = async (req: express.Request, res: express.Response): Promise<void> => {
+const get = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const name = req.params.name;

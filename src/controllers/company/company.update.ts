@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
 
-const update = async (req: express.Request, res: express.Response): Promise<void> => {
+const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { obj_id, organizationNr, name, email, phoneNr, description, facilities } = req.body;
@@ -15,7 +15,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     return;
   }
 
-  await CompanyModel.findOneAndUpdate(
+  CompanyModel.findOneAndUpdate(
     { _id: obj_id },
     {
       organizationNr: organizationNr,

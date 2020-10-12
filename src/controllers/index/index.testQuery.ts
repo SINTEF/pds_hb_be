@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
 
-const testQuery = async (req: express.Request, res: express.Response): Promise<void> => {
+const testQuery = (req: express.Request, res: express.Response): void => {
   db.connect();
   const testQuery = {};
 

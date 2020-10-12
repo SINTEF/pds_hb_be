@@ -2,10 +2,10 @@ import express from 'express';
 import db from '../../db';
 import { DataInstanceModel } from '../../models';
 
-const getOne = async (req: express.Request, res: express.Response): Promise<void> => {
+const getOne = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const _id = req.params._id;
+  const { _id } = req.params;
 
   if (!_id) {
     res.status(400).send({
