@@ -6,23 +6,16 @@ const getModulesAndEquipmentGroups = (req: express.Request, res: express.Respons
   db.connect();
 
   ModuleModel.find()
-    .then((modules) => {
-      const dataObj = {} as any;
-
-      modules.forEach((module) => {
-        const name = module.name;
-        dataObj[name] = module.equipmentGroups;
-      });
-
+    .then((modules) =>
       res.status(200).send({
         success: true,
-        data: dataObj,
-      });
-    })
+        data: modules,
+      })
+    )
     .catch(() =>
       res.status(400).send({
         success: false,
-        message: 'Something wrong with inputs.',
+        message: 'Something wrong with inputs',
       })
     );
 };
