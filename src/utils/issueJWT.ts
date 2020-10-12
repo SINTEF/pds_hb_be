@@ -14,13 +14,13 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
   const _id = user._id;
   const username = user.username;
   const userGroupId = user.userGroupId;
-  const expiresIn = '10s'; // TODO: '1d' -> 1 day
+  const expiresIn = '100s'; // TODO: '1d' -> 1 day
   const SECRET_KEY = process.env.SECRET_KEY;
   if (!SECRET_KEY) throw Error('Could not find key for ');
 
   const payload = {
     sub: _id,
-    iat: Date.now(),
+    iat: Math.floor(Date.now() / 1000),
     username,
     userGroupId,
   };

@@ -16,7 +16,7 @@ db.connect();
 app.use(express.json());
 app.use(cors());
 // Initialize jwt session with passport
-require('./config/passport');
+require('./middleware/passport');
 
 // Routes
 app.use('/', homeRoutes);

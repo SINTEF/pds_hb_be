@@ -1,4 +1,5 @@
-import { getOne, getAll } from './dataInstance.get';
+import getOne from './dataInstance.getOne';
+import getAll from './dataInstance.getAll';
 import register from './dataInstance.register';
 import update from './dataInstance.update';
 
