@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
 
-const register = async (req: express.Request, res: express.Response): Promise<void> => {
+const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { name, size, design, revisionDate, remarks, description, data, module, equipmentGroup } = req.body;
@@ -45,5 +45,4 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     );
 };
 
-//
 export default register;

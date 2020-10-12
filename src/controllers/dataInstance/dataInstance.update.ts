@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { DataInstanceModel } from '../../models';
 
-const update = async (req: express.Request, res: express.Response): Promise<void> => {
+const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { obj_id, facility, startDate, endDate, T, du, populationSize } = req.body;
@@ -15,7 +15,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     return;
   }
 
-  await DataInstanceModel.findOneAndUpdate(
+  DataInstanceModel.findOneAndUpdate(
     { _id: obj_id },
     {
       facility: facility,

@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import homeRoutes from './routes/index.routes';
+import indexRoutes from './routes/index.routes';
 import userRoutes from './routes/user.routes';
+import moduleRoutes from './routes/module.routes';
 import companyRoutes from './routes/company.routes';
 import dataInstanceRoutes from './routes/dataInstance.routes';
 import componentRoutes from './routes/component.routes';
@@ -19,11 +20,12 @@ app.use(cors());
 require('./middleware/passport');
 
 // Routes
-app.use('/', homeRoutes);
+app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/company', companyRoutes);
 app.use('/data-instance', dataInstanceRoutes);
 app.use('/component', componentRoutes);
+app.use('/module', moduleRoutes);
 
 // 404
 app.use((req, res) => {

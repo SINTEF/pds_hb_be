@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { DataInstanceModel } from '../../models';
 
-const getAll = async (req: express.Request, res: express.Response): Promise<void> => {
+const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const query = req.query;

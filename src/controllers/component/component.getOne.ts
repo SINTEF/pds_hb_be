@@ -2,11 +2,19 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
 
-const getOne = async (req: express.Request, res: express.Response): Promise<void> => {
+const getOne = (req: express.Request, res: express.Response): void => {
   db.connect();
-  const { _id } = req.params;
+  const { name } = req.params;
 
-  ComponentModel.findOne({ _id })
+  if (!name) {
+    res.status(400).send({
+      success: false,
+      message: 'Something wrong with parameters',
+    });
+    return;
+  }
+
+  ComponentModel.findOne({ name })
     .then((component) => {
       res.status(200).send({
         success: true,
