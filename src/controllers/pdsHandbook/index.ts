@@ -1,7 +1,9 @@
 import register from './pdsHandbook.register';
+import update from './pdsHandbook.update';
 
-const moduleController = {
+const pdsHandbookController = {
   register,
+  update,
 };
 
-export default moduleController;
+export default pdsHandbookController;

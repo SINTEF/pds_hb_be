@@ -5,9 +5,9 @@ import { PdsHandbookModel } from '../../models';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { chapters } = req.body;
+  const { chapterId, text, editedBy } = req.body;
 
-  if (!chapters) {
+  if (!chapterId || !text || !editedBy) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -16,7 +16,9 @@ const register = (req: express.Request, res: express.Response): void => {
   }
 
   const newPdsHandbook = new PdsHandbookModel({
-    chapters,
+    chapterId,
+    text,
+    editedBy,
   });
 
   newPdsHandbook
