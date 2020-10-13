@@ -22,10 +22,8 @@ export const UserSchema = new Schema({
   companyName: {
     type: String,
   },
-  userGroupId: {
-    //type: Schema.Types.ObjectId,
+  userGroupType: {
+    // Redo later
     type: String,
-    ref: 'UserGroup',
-    required: true,
   },
 });

@@ -7,6 +7,7 @@ export interface ICompany {
   phoneNr?: string;
   description?: string;
   facilities?: Array<string>;
+  maxUsers?: number;
   created?: Date;
 }
 
