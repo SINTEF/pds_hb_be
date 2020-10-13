@@ -12,7 +12,7 @@ const getOne = (req: express.Request, res: express.Response): void => {
       if (handbook == null) {
         res.status(404).send({
           success: false,
-          message: 'Chapter do not exist',
+          message: 'Chapter does not exist',
         });
       } else {
         res.status(200).send({
