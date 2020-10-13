@@ -19,14 +19,11 @@ export const UserSchema = new Schema({
     type: String,
     unique: true,
   },
-  companyId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Company',
-  },
-  userGroupId: {
-    //type: Schema.Types.ObjectId,
+  companyName: {
     type: String,
-    ref: 'UserGroup',
-    required: true,
+  },
+  userGroupType: {
+    // Redo later
+    type: String,
   },
 });

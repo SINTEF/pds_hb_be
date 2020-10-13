@@ -67,12 +67,10 @@ export const ComponentSchema = new Schema({
   module: {
     type: String,
     required: true,
-    unique: true,
   },
   equipmentGroup: {
     type: String,
     required: true,
-    unique: true,
   },
-  created: { type: Date, default: Date.now },
+  created: { type: Date, default: new Date() },
 });
