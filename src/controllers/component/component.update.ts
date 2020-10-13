@@ -5,9 +5,9 @@ import { ComponentModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { obj_id, name, size, design, revisionDate, remarks, description, data, module, equipmentGroup } = req.body;
+  const { obj_id, name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
 
-  if (!name || !data || !module || !equipmentGroup) {
+  if (!name || !data || !module || !equipmentGroup || !L3) {
     res.status(400).send({
       success: false,
       message: 'Required fields missing',
@@ -24,6 +24,7 @@ const update = (req: express.Request, res: express.Response): void => {
       revisionDate: revisionDate,
       remarks: remarks,
       description: description,
+      L3,
       data: data,
       module: module,
       equipmentGroup: equipmentGroup,
