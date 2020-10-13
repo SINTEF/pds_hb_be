@@ -25,8 +25,7 @@ const update = (req: express.Request, res: express.Response): void => {
     },
     { useFindAndModify: false }
   )
-    .then((originalDoc) => {
-      console.log(originalDoc);
+    .then(() => {
       res.status(200).send({
         success: true,
         message: 'Chapter successfully updated',
