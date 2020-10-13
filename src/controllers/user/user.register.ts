@@ -5,8 +5,8 @@ import { UserModel } from '../../models';
 
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
-  const { username, password, email, phoneNr, companyId, userGroupId } = req.body;
-  if (!username || !password || !email || !userGroupId) {
+  const { username, password, email, phoneNr, companyName, userGroupType } = req.body;
+  if (!username || !password || !email || !userGroupType) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields.',
@@ -27,8 +27,8 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
     passwordHash,
     email,
     phoneNr,
-    companyId,
-    userGroupId,
+    companyName,
+    userGroupType,
   });
 
   newUser
