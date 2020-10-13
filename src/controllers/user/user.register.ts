@@ -25,7 +25,7 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
   const newUser = new UserModel({
     username: username.toLowerCase(),
     passwordHash,
-    email,
+    email: email.toLowerCase(),
     phoneNr,
     companyName,
     userGroupType,
