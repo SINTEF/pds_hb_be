@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 router.put('/update', userController.update);
+router.get('/', userController.getAll);
 
 // Get request to test pagination
 router.get('/users', paginatedResults(UserModel));
