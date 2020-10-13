@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/:name', companyController.get);
 router.post('/', companyController.register);
-router.put('/', companyController.update);
+router.put('/:name', companyController.update);
 
 export default router;

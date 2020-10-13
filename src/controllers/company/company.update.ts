@@ -5,25 +5,19 @@ import { CompanyModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { _id, organizationNr, name, email, phoneNr, description, facilities } = req.body;
-
-  if (!organizationNr || !name) {
-    res.status(400).send({
-      success: false,
-      message: 'Required fields missing',
-    });
-    return;
-  }
+  const name = req.params.name;
+  console.log(name);
+  const { organizationNr, email, phoneNr, description, facilities, maxUsers } = req.body;
 
   CompanyModel.findOneAndUpdate(
-    { _id },
+    { name: name },
     {
       organizationNr: organizationNr,
-      name: name,
       email: email,
       phoneNr: phoneNr,
       description: description,
       facilities: facilities,
+      maxUsers: maxUsers,
     },
     { useFindAndModify: false }
   )

@@ -5,7 +5,7 @@ import { CompanyModel } from '../../models';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { organizationNr, name, email, phoneNr, description, facilities } = req.body;
+  const { organizationNr, name, email, phoneNr, description, facilities, maxUsers } = req.body;
   if (!organizationNr || !name || !email) {
     res.status(400).send({
       success: false,
@@ -21,6 +21,7 @@ const register = (req: express.Request, res: express.Response): void => {
     phoneNr,
     description,
     facilities,
+    maxUsers,
   });
 
   newCompany
