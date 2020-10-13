@@ -23,9 +23,9 @@ require('./middleware/passport');
 app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/company', companyRoutes);
-app.use('/data-instance', dataInstanceRoutes);
-app.use('/component', componentRoutes);
-app.use('/module', moduleRoutes);
+app.use('/data-instances', dataInstanceRoutes);
+app.use('/components', componentRoutes);
+app.use('/modules', moduleRoutes);
 
 // 404
 app.use((req, res) => {
