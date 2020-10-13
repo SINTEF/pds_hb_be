@@ -5,7 +5,7 @@ import { CompanyModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { obj_id, organizationNr, name, email, phoneNr, description, facilities } = req.body;
+  const { _id, organizationNr, name, email, phoneNr, description, facilities } = req.body;
 
   if (!organizationNr || !name) {
     res.status(400).send({
@@ -16,7 +16,7 @@ const update = (req: express.Request, res: express.Response): void => {
   }
 
   CompanyModel.findOneAndUpdate(
-    { _id: obj_id },
+    { _id },
     {
       organizationNr: organizationNr,
       name: name,

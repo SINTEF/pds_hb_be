@@ -5,7 +5,7 @@ import { ComponentModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { obj_id, name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
+  const { _id, name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
 
   if (!name || !data || !module || !equipmentGroup || !L3) {
     res.status(400).send({
@@ -16,7 +16,7 @@ const update = (req: express.Request, res: express.Response): void => {
   }
 
   ComponentModel.findOneAndUpdate(
-    { _id: obj_id },
+    { _id },
     {
       name: name,
       size: size,

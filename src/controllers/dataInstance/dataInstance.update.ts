@@ -5,7 +5,7 @@ import { DataInstanceModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { obj_id, facility, startDate, endDate, T, du, populationSize } = req.body;
+  const { _id, facility, startDate, endDate, T, du, populationSize } = req.body;
 
   if (!T || !du) {
     res.status(400).send({
@@ -16,7 +16,7 @@ const update = (req: express.Request, res: express.Response): void => {
   }
 
   DataInstanceModel.findOneAndUpdate(
-    { _id: obj_id },
+    { _id },
     {
       facility: facility,
       startDate: startDate,
