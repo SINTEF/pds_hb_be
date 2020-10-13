@@ -14,6 +14,6 @@ export const PdsHandbookSchema = new Schema({
   },
   lastUpdated: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
 });
