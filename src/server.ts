@@ -6,6 +6,7 @@ import moduleRoutes from './routes/module.routes';
 import companyRoutes from './routes/company.routes';
 import dataInstanceRoutes from './routes/dataInstance.routes';
 import componentRoutes from './routes/component.routes';
+import pdsHandbookRoutes from './routes/pdsHandbook.routes';
 import db from './db';
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,7 @@ app.use('/company', companyRoutes);
 app.use('/data-instances', dataInstanceRoutes);
 app.use('/components', componentRoutes);
 app.use('/modules', moduleRoutes);
+app.use('/pds-handbook', pdsHandbookRoutes);
 
 // 404
 app.use((req, res) => {
