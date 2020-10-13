@@ -25,6 +25,7 @@ export const CompanySchema = new Schema({
   facilities: [{ type: String }],
   maxUsers: {
     type: Number,
+    required: true,
   },
   created: { type: Date, default: Date.now },
 });
