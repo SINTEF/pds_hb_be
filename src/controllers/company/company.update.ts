@@ -5,22 +5,7 @@ import { CompanyModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const name = req.params.name;
-  console.log(name);
-  const { organizationNr, email, phoneNr, description, facilities, maxUsers } = req.body;
-
-  CompanyModel.findOneAndUpdate(
-    { name: name },
-    {
-      organizationNr: organizationNr,
-      email: email,
-      phoneNr: phoneNr,
-      description: description,
-      facilities: facilities,
-      maxUsers: maxUsers,
-    },
-    { useFindAndModify: false }
-  )
+  CompanyModel.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { useFindAndModify: false, new: true })
     .then((company) => {
       res.status(200).send({
         success: true,

@@ -5,7 +5,6 @@ import { PdsHandbookModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { chapterId } = req.params;
   const { text, editedBy } = req.body;
 
   if (!text) {
@@ -17,18 +16,19 @@ const update = (req: express.Request, res: express.Response): void => {
   }
 
   PdsHandbookModel.findOneAndUpdate(
-    { chapterId: chapterId },
+    { chapterId: req.params.chapterId },
     {
       text: text,
       editedBy: editedBy,
       lastUpdated: new Date(),
     },
-    { useFindAndModify: false }
+    { useFindAndModify: false, new: true }
   )
-    .then(() => {
+    .then((chapter) => {
       res.status(200).send({
         success: true,
         message: 'Chapter successfully updated',
+        data: chapter,
       });
     })
     .catch((err) => {
