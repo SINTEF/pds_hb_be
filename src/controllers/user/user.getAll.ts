@@ -1,26 +1,26 @@
 import express from 'express';
 import db from '../../db';
-import { ComponentModel } from '../../models';
+import { UserModel } from '../../models';
 
-// Finds all components based on equipment group
+// Finds all components based on  equipment group
 const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const equipmentGroup = req.query;
+  const { company } = req.query;
 
-  if (!equipmentGroup) {
+  if (!company || typeof company !== 'string') {
     res.status(400).send({
       success: false,
-      message: 'No equipment group received.',
+      message: 'No company received',
     });
     return;
   }
 
-  ComponentModel.find(equipmentGroup)
-    .then((component) => {
+  UserModel.find({ companyName: company })
+    .then((users) => {
       res.status(200).send({
         success: true,
-        data: component,
+        data: users,
       });
     })
     .catch(() =>
