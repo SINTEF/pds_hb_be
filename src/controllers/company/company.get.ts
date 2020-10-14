@@ -2,7 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
 
-const get = (req: express.Request, res: express.Response): void => {
+const getOne = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const name = req.params.name;
@@ -23,4 +23,4 @@ const get = (req: express.Request, res: express.Response): void => {
     );
 };
 
-export default get;
+export default getOne;

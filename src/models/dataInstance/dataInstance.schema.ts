@@ -31,6 +31,12 @@ export const DataInstanceSchema = new Schema({
   populationSize: {
     type: Number,
   },
+  failureRates: {
+    type: Number,
+  },
+  comment: {
+    type: String,
+  },
   L3: {
     measuringPrinciple: {
       type: String,
