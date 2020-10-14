@@ -12,8 +12,8 @@ interface Ijsonwebtoken {
 
 export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
   const _id = user._id;
-  const username = user.username;
-  const userGroupId = user.userGroupId;
+  const { username, userGroupType, email, phoneNr, companyName } = user;
+
   const expiresIn = '100s'; // TODO: '1d' -> 1 day
   const SECRET_KEY = process.env.SECRET_KEY;
   if (!SECRET_KEY) throw Error('Could not find key for ');
@@ -22,7 +22,10 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
     sub: _id,
     iat: Math.floor(Date.now() / 1000),
     username,
-    userGroupId,
+    userGroupType,
+    email,
+    phoneNr,
+    companyName,
   };
   const signedToken = jsonwebtoken.sign(payload, SECRET_KEY, { expiresIn });
   return {

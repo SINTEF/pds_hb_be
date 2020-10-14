@@ -1,23 +1,23 @@
 import express from 'express';
 import db from '../../db';
-import { PdsHandbookModel } from '../../models';
+import { UserModel } from '../../models';
 
 const del = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { chapterId } = req.params;
+  const { _id } = req.params;
 
-  PdsHandbookModel.findOneAndDelete({ chapterId: chapterId })
-    .then((chapter) => {
-      if (!chapter) {
+  UserModel.findOneAndDelete({ _id })
+    .then((user) => {
+      if (!user) {
         res.status(404).send({
           success: false,
-          message: 'Chapter does not exist',
+          message: 'User does not exist',
         });
       } else {
         res.status(200).send({
           success: true,
-          message: 'Chapter successfully deleted',
+          message: 'User successfully deleted',
         });
       }
     })
