@@ -9,6 +9,7 @@ router.post('/register', userController.register);
 router.post('/login', userController.login);
 router.put('/update', userController.update);
 router.get('/', userController.getAll);
+router.delete('/:_id', userController.del);
 
 // Get request to test pagination
 router.get('/users', paginatedResults(UserModel));
