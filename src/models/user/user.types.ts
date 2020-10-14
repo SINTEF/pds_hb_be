@@ -1,4 +1,4 @@
-import { Document, Schema } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface IUser {
   username: string;
@@ -6,7 +6,7 @@ export interface IUser {
   email: string;
   phoneNr?: string;
   companyName?: string;
-  userGroupId: string;
+  userGroupType: string;
 }
 
 export interface IUserDocument extends IUser, Document {}
