@@ -7,7 +7,7 @@ const register = (req: express.Request, res: express.Response): void => {
 
   const { company, facility, component, startDate, endDate, T, du, populationSize, L3 } = req.body;
 
-  if (!company || !facility || !component || !T || !du || !L3) {
+  if (!company || !facility || !component || !T || !du) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',

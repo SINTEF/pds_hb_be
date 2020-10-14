@@ -5,32 +5,7 @@ import { ComponentModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { _id, name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
-
-  if (!name || !data || !module || !equipmentGroup || !L3) {
-    res.status(400).send({
-      success: false,
-      message: 'Required fields missing',
-    });
-    return;
-  }
-
-  ComponentModel.findOneAndUpdate(
-    { _id },
-    {
-      name: name,
-      size: size,
-      design: design,
-      revisionDate: revisionDate,
-      remarks: remarks,
-      description: description,
-      L3,
-      data: data,
-      module: module,
-      equipmentGroup: equipmentGroup,
-    },
-    { useFindAndModify: false }
-  )
+  ComponentModel.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { useFindAndModify: false, new: true })
     .then((component) => {
       res.status(200).send({
         success: true,
@@ -43,6 +18,7 @@ const update = (req: express.Request, res: express.Response): void => {
         success: false,
         message: 'Error: Values not unique',
         duplicateField: err.keyValue,
+        error: err,
       });
     });
 };
