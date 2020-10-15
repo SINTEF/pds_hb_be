@@ -9,6 +9,7 @@ export const PdsHandbookSchema = new Schema({
   text: {
     type: String,
   },
+  // Last edited by
   editedBy: {
     type: String,
   },
