@@ -5,28 +5,12 @@ import { UserModel } from '../../models';
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { username, email, phoneNr } = req.body;
-
-  if (!email) {
-    res.status(400).send({
-      success: false,
-      message: 'Required field missing',
-    });
-    return;
-  }
-
-  UserModel.findOneAndUpdate(
-    { username: username },
-    {
-      email: email,
-      phoneNo: phoneNr,
-    },
-    { useFindAndModify: false }
-  )
-    .then(() => {
+  UserModel.findOneAndUpdate({ username: req.params.username }, { $set: req.body }, { useFindAndModify: false, new: true })
+    .then((user) => {
       res.status(200).send({
         success: true,
         message: 'Successfully updated user data',
+        data: user,
       });
     })
     .catch((err) => {
