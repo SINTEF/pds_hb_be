@@ -15,7 +15,7 @@ export interface IComponent {
     measuringPrinciple?: Array<string>;
     designMountingPrinciple?: Array<string>;
     actuationPrinciple?: Array<string>;
-    mediumProperties?: Array<string>;
+    mediumProperty?: Array<string>;
     dimension?: Array<string>;
     locationEnvironment?: Array<string>;
     application?: Array<string>;
