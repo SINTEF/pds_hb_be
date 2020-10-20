@@ -1,5 +1,7 @@
 import { Document } from 'mongoose';
 
+type TStatus = 'published' | 'approved' | 'not reviewed';
+
 export interface IDataInstance {
   company: string;
   facility: string;
@@ -11,6 +13,8 @@ export interface IDataInstance {
   populationSize?: number;
   failureRates?: number;
   comment?: string;
+  sintefComment?: string;
+  status?: TStatus;
   L3: {
     measuringPrinciple?: string;
     designMountingPrinciple?: string;

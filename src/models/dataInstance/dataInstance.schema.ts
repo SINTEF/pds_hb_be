@@ -37,6 +37,12 @@ export const DataInstanceSchema = new Schema({
   comment: {
     type: String,
   },
+  sintefComment: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
   L3: {
     measuringPrinciple: {
       type: String,
