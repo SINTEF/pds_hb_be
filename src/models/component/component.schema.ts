@@ -23,39 +23,39 @@ export const ComponentSchema = new Schema({
     type: String,
   },
   L3: {
-    measuringPrinciples: {
+    measuringPrinciple: {
       type: [String],
       default: undefined,
     },
-    designMountingPrinciples: {
+    designMountingPrinciple: {
       type: [String],
       default: undefined,
     },
-    actuationPrinciples: {
+    actuationPrinciple: {
       type: [String],
       default: undefined,
     },
-    mediumProperties: {
+    mediumProperty: {
       type: [String],
       default: undefined,
     },
-    dimensions: {
+    dimension: {
       type: [String],
       default: undefined,
     },
-    locationEnvironments: {
+    locationEnvironment: {
       type: [String],
       default: undefined,
     },
-    applications: {
+    application: {
       type: [String],
       default: undefined,
     },
-    diagnosticsConfigurations: {
+    diagnosticsConfiguration: {
       type: [String],
       default: undefined,
     },
-    testMaintenanceMonitoringStrategies: {
+    testMaintenanceMonitoringStrategy: {
       type: [String],
       default: undefined,
     },
