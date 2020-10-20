@@ -47,7 +47,7 @@ export const DataInstanceSchema = new Schema({
     actuationPrinciple: {
       type: String,
     },
-    mediumProperties: {
+    mediumProperty: {
       type: String,
     },
     dimension: {

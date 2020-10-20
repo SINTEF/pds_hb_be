@@ -15,7 +15,7 @@ export interface IDataInstance {
     measuringPrinciple?: string;
     designMountingPrinciple?: string;
     actuationPrinciple?: string;
-    mediumProperties?: string;
+    mediumProperty?: string;
     dimension?: string;
     locationEnvironment?: string;
     application?: string;
