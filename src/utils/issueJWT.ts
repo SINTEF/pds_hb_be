@@ -14,7 +14,7 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
   const _id = user._id;
   const { username, userGroupType, email, phoneNr, companyName } = user;
 
-  const expiresIn = '1d'; // TODO: '1d' -> 1 day
+  const expiresIn = '1d';
   const SECRET_KEY = process.env.SECRET_KEY;
   if (!SECRET_KEY) throw Error('Could not find key for ');
 

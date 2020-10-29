@@ -16,23 +16,28 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
     return;
   }
 
-  const userQuery = username && { username: username.toLowerCase() };
+  if (typeof username !== 'string') {
+    res.status(400).send({
+      success: false,
+      message: 'Username must be of type string',
+    });
+    return;
+  }
 
-  const user = (await UserModel.findOne({ ...userQuery })
-    .then((user) => {
-      return user;
-    })
-    .catch(() =>
-      res.status(400).send({
-        success: false,
-        message: 'Something wrong with inputs',
-      })
-    )) as IUserDocument | null;
+  const user = (await UserModel.findOne({ username: username.toLowerCase() }).then((user) => user)) as IUserDocument | null;
 
   if (!user) {
     res.status(400).send({
       success: false,
       message: 'User not found',
+    });
+    return;
+  }
+
+  if (user.userGroupType === 'none') {
+    res.status(400).send({
+      success: false,
+      message: 'This user has not yet been approved.',
     });
     return;
   }
@@ -43,12 +48,15 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
       message: 'Something wrong with password input',
     })
   );
+  if (res.statusCode === 409) return;
 
-  if (!authorized)
+  if (!authorized) {
     res.status(400).send({
       success: false,
       message: 'Wrong password',
     });
+    return;
+  }
 
   // IF SUCCESS:
   const { token } = issueJWT(user);
@@ -57,7 +65,6 @@ const login = async (req: express.Request, res: express.Response): Promise<void>
     message: 'User authorized',
     data: user,
     token,
-    //expiresIn,
   });
 };
 
