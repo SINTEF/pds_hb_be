@@ -2,21 +2,34 @@ import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
 
-// Finds all components based on  equipment group
+interface IQuery {
+  companyName?: string;
+  userGroupType?: string;
+}
+
+// Finds all users by company or approved status
 const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company } = req.query;
+  const { companyName, userGroupType } = req.query;
 
-  if (!company || typeof company !== 'string') {
+  if (!companyName && !userGroupType) {
     res.status(400).send({
       success: false,
-      message: 'No company received',
+      message: 'No company or user group type received',
     });
     return;
   }
 
-  UserModel.find({ companyName: company })
+  if (userGroupType && userGroupType !== 'none') {
+    res.status(400).send({
+      success: false,
+      message: "Can't query users of userGroupType: " + userGroupType,
+    });
+    return;
+  }
+
+  UserModel.find(req.query)
     .then((users) => {
       res.status(200).send({
         success: true,
