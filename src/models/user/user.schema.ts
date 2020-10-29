@@ -25,5 +25,6 @@ export const UserSchema = new Schema({
   userGroupType: {
     // Redo later
     type: String,
+    required: true,
   },
 });
