@@ -16,7 +16,7 @@ const getAll = (req: express.Request, res: express.Response): void => {
   if (!company && !userGroupType) {
     res.status(400).send({
       success: false,
-      message: 'No company received',
+      message: 'No company or user group type received',
     });
     return;
   }
