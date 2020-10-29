@@ -11,9 +11,9 @@ interface IQuery {
 const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, userGroupType } = req.query;
+  const { companyName, userGroupType } = req.query;
 
-  if (!company && !userGroupType) {
+  if (!companyName && !userGroupType) {
     res.status(400).send({
       success: false,
       message: 'No company or user group type received',
@@ -21,12 +21,15 @@ const getAll = (req: express.Request, res: express.Response): void => {
     return;
   }
 
-  const query = {} as IQuery;
+  if (userGroupType && userGroupType !== 'none') {
+    res.status(400).send({
+      success: false,
+      message: "Can't query users of userGroupType: " + userGroupType,
+    });
+    return;
+  }
 
-  if (company && typeof company === 'string') query.companyName = company;
-  if (userGroupType && userGroupType === 'none') query.userGroupType = userGroupType;
-
-  UserModel.find(query)
+  UserModel.find(req.query)
     .then((users) => {
       res.status(200).send({
         success: true,
