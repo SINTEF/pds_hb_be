@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-type TStatus = 'published' | 'approved' | 'not reviewed';
+type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed';
 
 export interface IDataInstance {
   company: string;
