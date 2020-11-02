@@ -2,11 +2,6 @@ import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
 
-interface IQuery {
-  companyName?: string;
-  userGroupType?: string;
-}
-
 // Finds all users by company or approved status
 const getAll = (req: express.Request, res: express.Response): void => {
   db.connect();
