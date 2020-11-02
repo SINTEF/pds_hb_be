@@ -18,7 +18,6 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     if (!passwordHash) return;
     delete body.password;
     body.passwordHash = passwordHash;
-    console.log(body);
   }
 
   UserModel.findOneAndUpdate({ username: req.params.username }, { $set: body }, { useFindAndModify: false, new: true })
