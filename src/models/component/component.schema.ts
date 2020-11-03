@@ -22,6 +22,9 @@ export const ComponentSchema = new Schema({
   description: {
     type: String,
   },
+  definitionOfDU: {
+    type: String,
+  },
   L3: {
     measuringPrinciple: {
       type: [String],
