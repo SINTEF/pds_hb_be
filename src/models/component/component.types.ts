@@ -11,6 +11,7 @@ export interface IComponent {
   revisionDate?: Date;
   remarks?: string;
   description?: string;
+  definitionOfDU?: string;
   L3: {
     measuringPrinciple?: Array<string>;
     designMountingPrinciple?: Array<string>;

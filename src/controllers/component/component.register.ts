@@ -5,7 +5,7 @@ import { ComponentModel } from '../../models';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { name, size, design, revisionDate, remarks, description, L3, data, module, equipmentGroup } = req.body;
+  const { name, size, design, revisionDate, remarks, description, definitionOfDU, L3, data, module, equipmentGroup } = req.body;
 
   if (!name || !data || !module || !L3 || !equipmentGroup) {
     res.status(400).send({
@@ -22,6 +22,7 @@ const register = (req: express.Request, res: express.Response): void => {
     revisionDate,
     remarks,
     description,
+    definitionOfDU,
     L3,
     data,
     module,
