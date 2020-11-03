@@ -1,11 +1,26 @@
 import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
+import bcrypt from 'bcrypt';
 
-const update = (req: express.Request, res: express.Response): void => {
+const update = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
-  UserModel.findOneAndUpdate({ username: req.params.username }, { $set: req.body }, { useFindAndModify: false, new: true })
+  const body = req.body;
+
+  if (body.password) {
+    const passwordHash = await bcrypt.hash(body.password, 10).catch(() =>
+      res.status(400).send({
+        success: false,
+        message: 'Password must be a string.',
+      })
+    );
+    if (!passwordHash) return;
+    delete body.password;
+    body.passwordHash = passwordHash;
+  }
+
+  UserModel.findOneAndUpdate({ username: req.params.username }, { $set: body }, { useFindAndModify: false, new: true })
     .then((user) => {
       res.status(200).send({
         success: true,
