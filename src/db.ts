@@ -6,6 +6,10 @@ dotenv.config({ path: path.resolve(__dirname, './config/.env') });
 
 let database: Mongoose.Connection;
 
+const getDatabase = () => {
+  return database;
+};
+
 const connect = (): void => {
   if (database) return;
 
@@ -27,6 +31,27 @@ const connect = (): void => {
   });
 };
 
+const connectTest = (): void => {
+  if (database) return;
+
+  const mongoURITest = process.env.mongoURITest;
+  if (!mongoURITest) throw Error('Cannot find mongo URI environment variable');
+
+  Mongoose.connect(mongoURITest, {
+    useNewUrlParser: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
+  database = Mongoose.connection;
+  database.once('open', async () => {
+    console.log('Connected to testing database');
+  });
+  database.on('error', () => {
+    console.log('Error connecting to testing database');
+  });
+};
+
 const disconnect = (): void => {
   if (!database) {
     return;
@@ -35,6 +60,8 @@ const disconnect = (): void => {
 };
 
 export default {
+  getDatabase,
   connect,
+  connectTest,
   disconnect,
 };
