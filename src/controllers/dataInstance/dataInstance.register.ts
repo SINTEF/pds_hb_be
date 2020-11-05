@@ -5,7 +5,7 @@ import { DataInstanceModel } from '../../models';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, facility, component, startDate, endDate, T, du, populationSize, failureRates, comment, sintefComment, status, L3 } = req.body;
+  const { company, facility, component, startDate, endDate, T, du, populationSize, failureRates, comment, sintefComment, L3 } = req.body;
 
   if (!company || !facility || !component || !T || !du) {
     res.status(400).send({
@@ -26,8 +26,8 @@ const register = (req: express.Request, res: express.Response): void => {
     populationSize,
     failureRates,
     comment,
-    sintefComment,
-    status,
+    sintefComment: sintefComment || 'No comment',
+    status: 'not reviewed',
     L3,
   });
 
