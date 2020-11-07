@@ -1,13 +1,24 @@
 import db from '../db';
+import mongoose from 'mongoose';
 import { CompanyModel } from '../models';
 
 const companyData = {
   organizationNr: '1',
   name: 'AlexCompany',
   email: 'alex@company.com',
-  phoneNr: '12345678',
-  description: 'worlds leading oil and energy company',
-  facilities: ['Oil rig 1', 'Oil rig 2'],
+  maxUsers: 10,
+};
+
+const companyDataCopyCat = {
+  organizationNr: '2',
+  name: 'AlexCompany',
+  email: 'alex2@company.com',
+  maxUsers: 10,
+};
+
+const companyDataMissingField = {
+  organizationNr: '1',
+  name: 'AlexCompany', // email is a required field
   maxUsers: 10,
 };
 
@@ -26,10 +37,33 @@ describe('Company Tests', () => {
     expect(savedCompany.name).toBe(companyData.name);
     expect(savedCompany.email).toBe(companyData.email);
     expect(savedCompany.created).toBeDefined();
+    await CompanyModel.findOneAndDelete({ name: companyData.name });
+  });
+
+  it('create two companies with same required and unique key fails', async () => {
+    const validCompany = new CompanyModel(companyData);
+    await validCompany.save();
+    const copyCatCompany = new CompanyModel(companyDataCopyCat);
+    try {
+      await copyCatCompany.save();
+    } catch (error) {
+      expect(error.name).toBe('MongoError');
+      expect(error.code).toBe(11000); // code for duplicate key error
+    }
+    await CompanyModel.findOneAndDelete({ name: companyData.name });
+  });
+
+  // Test Validation is working!!!
+  // It should us told us the errors in on gender field.
+  it('create company without required field fails', () => {
+    const companyWithoutRequiredField = new CompanyModel(companyDataMissingField);
+    companyWithoutRequiredField
+      .save()
+      .then(() => fail('company schema should not be successfully saved, as it is missing required field(s)'))
+      .catch((error) => expect(error).toBeInstanceOf(mongoose.Error.ValidationError));
   });
 
   afterAll(() => {
-    const database = db.getDatabase();
-    database.dropCollection('companies');
+    db.disconnect();
   });
 });
