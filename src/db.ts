@@ -6,10 +6,6 @@ dotenv.config({ path: path.resolve(__dirname, './config/.env') });
 
 let database: Mongoose.Connection;
 
-const getDatabase = () => {
-  return database;
-};
-
 const connect = (): void => {
   if (database) return;
 
@@ -60,7 +56,6 @@ const disconnect = (): void => {
 };
 
 export default {
-  getDatabase,
   connect,
   connectTest,
   disconnect,
