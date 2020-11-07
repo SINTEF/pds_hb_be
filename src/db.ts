@@ -35,7 +35,7 @@ const connectTest = (): void => {
   if (database) return;
 
   const mongoURITest = process.env.mongoURITest;
-  if (!mongoURITest) throw Error('Cannot find mongo URI environment variable');
+  if (!mongoURITest) throw Error('Cannot find mongo URI Test environment variable');
 
   Mongoose.connect(mongoURITest, {
     useNewUrlParser: true,

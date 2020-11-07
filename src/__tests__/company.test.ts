@@ -40,7 +40,7 @@ describe('Company Tests', () => {
     await CompanyModel.findOneAndDelete({ name: companyData.name });
   });
 
-  it('create two companies with same required and unique key fails', async () => {
+  it('creating two companies with same required and unique key fails', async () => {
     const validCompany = new CompanyModel(companyData);
     await validCompany.save();
     const copyCatCompany = new CompanyModel(companyDataCopyCat);
@@ -53,8 +53,6 @@ describe('Company Tests', () => {
     await CompanyModel.findOneAndDelete({ name: companyData.name });
   });
 
-  // Test Validation is working!!!
-  // It should us told us the errors in on gender field.
   it('create company without required field fails', () => {
     const companyWithoutRequiredField = new CompanyModel(companyDataMissingField);
     companyWithoutRequiredField
