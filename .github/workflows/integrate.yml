@@ -23,9 +23,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: ls
       - run: npm ci
-      - run: mkdir -p src/config
-      - run: echo mongoURITest=${{secrets.MONGOURITEST}} > src/config.env
-      - run: ls src/config
+      - run: ls
+      - run: mkdir config
+      - run: ls
       - run: npm run build --if-present
+      - run: ls
       - run: npm test
+      - run: ls
