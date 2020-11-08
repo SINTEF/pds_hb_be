@@ -27,7 +27,7 @@ jobs:
       - run: mkdir -p src/config
       - run: ls src
       - run: echo mongoURITest=123 > .env
-      - run: ls
+      - run: ls -a
       - run: cat .env
       - run: npm run build --if-present
       - run: npm test
