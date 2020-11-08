@@ -26,6 +26,9 @@ jobs:
       - run: npm ci
       - run: mkdir src/config
       - run: echo mongoURITest=${{secrets.MONGOURITEST}} > src/config.env
-      - run: cd src/config && ls
+      - run: cd src
+      - run: ls
+      - run: cd config
+      - run: ls
       - run: npm run build --if-present
       - run: npm test
