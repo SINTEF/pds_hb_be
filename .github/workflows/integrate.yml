@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: cd src
+      - run: mkdir src/config
+      - run: echo ${{secret.mongoURITest}} > src/config.env
       - run: npm run build --if-present
       - run: npm test
