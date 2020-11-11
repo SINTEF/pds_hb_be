@@ -27,6 +27,27 @@ const connect = (): void => {
   });
 };
 
+const connectTest = (): void => {
+  if (database) return;
+
+  const mongoURITest = process.env.mongoURITest;
+  if (!mongoURITest) throw Error('Cannot find mongo URI Test environment variable');
+
+  Mongoose.connect(mongoURITest, {
+    useNewUrlParser: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  });
+  database = Mongoose.connection;
+  database.once('open', async () => {
+    console.log('Connected to testing database');
+  });
+  database.on('error', () => {
+    console.log('Error connecting to testing database');
+  });
+};
+
 const disconnect = (): void => {
   if (!database) {
     return;
@@ -36,5 +57,6 @@ const disconnect = (): void => {
 
 export default {
   connect,
+  connectTest,
   disconnect,
 };
