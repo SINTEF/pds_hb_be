@@ -1,6 +1,6 @@
-import db from '../db';
+import db from '../../db';
 import mongoose from 'mongoose';
-import { CompanyModel } from '../models';
+import { CompanyModel } from '..';
 
 const companyData = {
   organizationNr: '1',

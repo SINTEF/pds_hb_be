@@ -1,6 +1,6 @@
-import db from '../db';
+import db from '../../db';
 import mongoose from 'mongoose';
-import { ComponentModel } from '../models';
+import { ComponentModel } from '..';
 
 const componentData = {
   name: 'Flame-detector',
