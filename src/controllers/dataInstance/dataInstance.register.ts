@@ -6,7 +6,7 @@ import { getT } from '../../utils/getT';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, facility, component, startDate, endDate, du, populationSize, failureRates, comment, L3 } = req.body;
+  const { company, facility, component, startDate, endDate, du, populationSize, comment, L3 } = req.body;
 
   if (!company || !facility || !component || !du) {
     res.status(400).send({
@@ -17,6 +17,7 @@ const register = (req: express.Request, res: express.Response): void => {
   }
 
   const T = getT(startDate, endDate, populationSize);
+  const failureRates = ((du*10**6)/T).toPrecision(3)
 
   const newDataInstance = new DataInstanceModel({
     company,
