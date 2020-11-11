@@ -3,7 +3,7 @@ export const getT = (startDateString: string, endDateString: string, populationS
   const endDate = new Date(endDateString);
 
   const differenceInMilliSeconds = endDate.getTime() - startDate.getTime();
-  const differenceInDays = Math.floor(differenceInMilliSeconds / (1000 * 3600 * 24));
+  const differenceInDays = Math.floor(differenceInMilliSeconds / (1000 * 3600));
 
   return differenceInDays * populationSize;
 };
