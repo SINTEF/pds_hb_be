@@ -17,7 +17,7 @@ const register = (req: express.Request, res: express.Response): void => {
   }
 
   const T = getT(startDate, endDate, populationSize);
-  const failureRates = ((du*10**6)/T).toPrecision(3)
+  const failureRates = ((du * 10 ** 6) / T).toPrecision(3);
 
   const newDataInstance = new DataInstanceModel({
     company,

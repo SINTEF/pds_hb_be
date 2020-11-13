@@ -6,5 +6,6 @@ const router = express.Router();
 router.get('/', moduleController.getModulesAndEquipmentGroups);
 router.post('/', moduleController.register);
 router.put('/', moduleController.addEquipmentGroup);
+router.put('/equipmentGroup', moduleController.updateEquipmentGroup);
 
 export default router;
