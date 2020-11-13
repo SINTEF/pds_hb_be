@@ -53,6 +53,7 @@ const disconnect = (): void => {
     return;
   }
   Mongoose.disconnect();
+  console.log('Disconnected to database');
 };
 
 export default {
