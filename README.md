@@ -8,9 +8,9 @@ This repository includes the complete back-end for the PDS data handbook applica
 
 Note: Make sure to have [git](https://git-scm.com/). This can be verified by typing ```git --version``` in your terminal.
 
-Open your terminal and navigate to the directory you want to clone the project to. Type:
+Clone the repository by your method of choice. To clone with HTTPS, open your terminal and navigate to the directory you want to clone the project. Type:
 ```
-git clone ...
+git clone https://github.com/SINTEF/pds_hb_be.git
 ```
 
 ### Install dependencies
@@ -24,7 +24,7 @@ npm install
 
 ## Usage
 
-Note: To run the entire application, see [front-end README](...)
+Note: To run the entire application, see [front-end README](https://github.com/SINTEF/pds_hb/blob/development/README.md)
 
 ### Running the server
 
