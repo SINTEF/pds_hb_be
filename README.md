@@ -39,7 +39,7 @@ _SECRET_KEY=..._
 
 _mongoURI=..._
 
-_MongoURITest=..._
+_mongoURITest=..._
 
 _PORT=5000_
 
