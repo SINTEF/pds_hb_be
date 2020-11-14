@@ -24,7 +24,7 @@ npm install
 
 ## Usage
 
-_To run the entire application, see [front-end README](https://github.com/SINTEF/pds_hb/blob/development/README.md)_
+To run the entire application, see [front-end README](https://github.com/SINTEF/pds_hb/blob/development/README.md)
 
 ### Running the server
 
@@ -33,8 +33,7 @@ To run the back-end of the PDS data handbook, navigate to the root folder and ty
 npm start
 ```
 
-_NB: The server will not run if you do not have the environment files._
-
+_NB: The server will not run if you do not have the environment files. For the staff of TDT4290, this can be found in the repport appendix. In your local repository, make a file in src/config/ called .env and paste the contains found in the appendix._
 
 ### Running the tests
 
