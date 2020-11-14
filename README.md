@@ -39,6 +39,8 @@ _SECRET_KEY=..._
 
 _mongoURI=..._
 
+_MongoURITest=..._
+
 _PORT=5000_
 
 ### Running the tests
