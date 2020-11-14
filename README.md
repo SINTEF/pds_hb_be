@@ -1,22 +1,21 @@
-# Backend-boys README
+# Back-end for PDS handbook
 
-Temporary repo for the backend team of KPRO16 2020
+This repository includes the complete back-end for the PDS handbook application. It includes every endpoint and associated controller, as well as every database model.
 
-## Npm modules
+## Installation
 
-- Express - ...
-- Typescript - ...
-- Eslint
-- Nodemon - Nodemon watches for file changes and automaticaly restarts the Node.js application on file change. This means you don't have to physically restart the server (locally) every time you make a change.
+Make sure to have [node](https://nodejs.org/en/download/).
 
-# Npm commands
+```bash
+pip install foobar
+```
 
-- start - ...
-- test - ...
-- lint - ...
-- format - ...
-- format-check - ...
+## Usage
 
-## Coding standards
+```python
+import foobar
 
-Should cover linting, formatting, etc.
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
