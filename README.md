@@ -33,7 +33,11 @@ To run the back-end of the PDS data handbook, navigate to the root folder and ty
 npm start
 ```
 
-_NB: The server will not run if you do not have the environment files. For the staff of TDT4290, this can be found in the repport appendix. In your local repository, make a file in src/config/ called .env and paste the contains found in the appendix._
+_NB: The server will not run if you do not have the environment variables. For the staff of TDT4290, the envionment variables can be found in the repport appendix in the section called "README for Front-end and Back-end". In your local repository simply paste the variables found in the appendix. They should be on the format:_
+
+_SECRET_KEY=_
+
+_mongoURI=_
 
 ### Running the tests
 
