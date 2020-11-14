@@ -39,6 +39,8 @@ _SECRET_KEY=..._
 
 _mongoURI=..._
 
+_PORT=5000_
+
 ### Running the tests
 
 To run the test of the back-end, navigate to the root folder and type:
