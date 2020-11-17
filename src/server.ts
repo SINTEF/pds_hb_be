@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import indexRoutes from './routes/index.routes';
 import userRoutes from './routes/user.routes';
 import moduleRoutes from './routes/module.routes';
 import companyRoutes from './routes/company.routes';
@@ -21,7 +20,6 @@ app.use(cors());
 require('./middleware/passport');
 
 // Routes
-app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/company', companyRoutes);
 app.use('/data-instances', dataInstanceRoutes);
