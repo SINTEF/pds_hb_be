@@ -1,9 +1,15 @@
 import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
+
+  const companyName = req.params.name;
+  console.log(companyName);
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
+  if (!isAuthorized) return;
 
   CompanyModel.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { useFindAndModify: false, new: true })
     .then((company) => {

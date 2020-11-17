@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../../db';
 import { PdsHandbookModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const update = (req: express.Request, res: express.Response): void => {
   db.connect();
@@ -14,6 +15,9 @@ const update = (req: express.Request, res: express.Response): void => {
     });
     return;
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   PdsHandbookModel.findOneAndUpdate(
     { chapterId: req.params.chapterId },

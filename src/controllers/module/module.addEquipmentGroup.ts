@@ -2,6 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ModuleModel } from '../../models';
 import { IModuleDocument } from '../../models/module/module.types';
+import { checkAuthorization } from '../../utils/authorize';
 
 const addEquipmentGroup = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
@@ -15,6 +16,9 @@ const addEquipmentGroup = async (req: express.Request, res: express.Response): P
     });
     return;
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   const module = (await ModuleModel.findOne({ name }).then((module) => {
     return module;

@@ -2,6 +2,7 @@ import express from 'express';
 import db from '../../db';
 import { ComponentModel, ModuleModel } from '../../models';
 import { IModuleDocument } from '../../models/module/module.types';
+import { checkAuthorization } from '../../utils/authorize';
 const updateEquipmentGroup = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
   const { newName, oldName, newModule, oldModule } = req.body;
@@ -12,6 +13,9 @@ const updateEquipmentGroup = async (req: express.Request, res: express.Response)
       message: 'Missing parameters',
     });
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   let newModuleFromDb;
   const module = (await ModuleModel.findOne({ name: oldModule }).then((module) => {

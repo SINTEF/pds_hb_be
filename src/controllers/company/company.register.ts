@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
@@ -13,6 +14,10 @@ const register = (req: express.Request, res: express.Response): void => {
     });
     return;
   }
+
+  //const isAuthorized = checkAuthorization(req, res, {checkAdminOrCompany: true, companyName: name});
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   const newCompany = new CompanyModel({
     organizationNr,

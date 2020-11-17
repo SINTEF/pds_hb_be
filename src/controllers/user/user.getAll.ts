@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 // Finds all users by company or approved status
 const getAll = (req: express.Request, res: express.Response): void => {
@@ -15,6 +16,9 @@ const getAll = (req: express.Request, res: express.Response): void => {
     });
     return;
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   if (userGroupType && userGroupType !== 'none') {
     res.status(400).send({
