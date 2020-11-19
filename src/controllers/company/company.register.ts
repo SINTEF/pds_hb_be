@@ -2,6 +2,8 @@ import express from 'express';
 import db from '../../db';
 import { CompanyModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
+import { makeCompanyAlias } from '../../utils/makeCompanyAlias';
+// TODO: import { makeFacilityAlias } from '../../utils/makeFacilityAlias';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
@@ -31,13 +33,15 @@ const register = (req: express.Request, res: express.Response): void => {
 
   newCompany
     .save()
-    .then((company) =>
+    .then(async (company) => {
+      await makeCompanyAlias(company.name);
+      // TODO: Add alias for every facility in facilities[]
       res.status(200).send({
         success: true,
         message: 'Company successfully created',
         data: company,
-      })
-    )
+      });
+    })
     .catch((err) =>
       res.status(409).send({
         success: false,
