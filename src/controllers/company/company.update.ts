@@ -7,7 +7,7 @@ const update = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const companyName = req.params.name;
-  console.log(companyName);
+
   const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
   if (!isAuthorized) return;
 

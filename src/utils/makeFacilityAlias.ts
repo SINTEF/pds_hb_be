@@ -36,11 +36,7 @@ export const makeFacilityAlias = async (facility: string): Promise<void> => {
     index,
   });
 
-  newAlias
-    .save()
-    .then(() => console.log('Saved alias for: ' + facility))
-    .catch((err) => {
-      console.log(err);
-      throw 'unable to save alias';
-    });
+  newAlias.save().catch(() => {
+    throw 'unable to save alias';
+  });
 };

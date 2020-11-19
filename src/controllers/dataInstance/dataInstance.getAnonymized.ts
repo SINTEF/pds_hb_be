@@ -28,8 +28,6 @@ const getAnonymized = (req: express.Request, res: express.Response): void => {
 
           newDataInstance.company = companyAlias?.alias ? companyAlias.alias.toString() : '';
           newDataInstance.facility = facilityAlias?.alias || '';
-          console.log('facility: ' + facilityAlias?.alias);
-          console.log('company: ' + companyAlias?.alias);
           return newDataInstance;
         })
       );

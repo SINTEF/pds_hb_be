@@ -1,12 +1,18 @@
-import { makeFacilityAlias } from './makeFacilityAlias';
-import { makeCompanyAlias } from './makeCompanyAlias';
+/*
+THIS FILE IS IS MADE ONLY TO POPULATE THE DATABSE WITH ALIASES
+SHOULD BE DELETED AFTER AUTOMATIC ALIAS CREATION HAS BEED ADDED
+ONLY AUTOMATIC ADDING FOR COMPANY ALIASES HAS BEEN MADE THUS FAR
+*/
+
+// import { makeFacilityAlias } from './makeFacilityAlias';
+// import { makeCompanyAlias } from './makeCompanyAlias';
 
 /*
 COMPANIES:
 */
 
 // makeCompanyAlias('Equinor')
-makeCompanyAlias('Andrea sitt firma');
+// makeCompanyAlias('Andrea sitt firma');
 // makeCompanyAlias('LarsOgRosemaling')
 // makeCompanyAlias('SINTEF')
 // makeCompanyAlias('Siemens')
@@ -33,6 +39,4 @@ ALIASES:
 // makeFacilityAlias('Valhall')
 // makeFacilityAlias('Askeladden')
 // makeFacilityAlias('Troll')
-makeFacilityAlias('SuperTroll');
-
-//console.log(makeAliasFromIndex(26*26*26+25))
+// makeFacilityAlias('SuperTroll');
