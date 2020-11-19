@@ -27,7 +27,6 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
     phoneNr,
     companyName,
   };
-  console.log(payload.iat);
   const signedToken = jsonwebtoken.sign(payload, SECRET_KEY, { expiresIn });
   return {
     token: 'Bearer ' + signedToken,
