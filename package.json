@@ -12,7 +12,8 @@
     "format:fix": "npx prettier --write .",
     "format": "npx prettier --check .",
     "fix": "npm run format:fix && npm run lint:fix",
-    "check": "npm run format && npm run lint"
+    "check": "npm run format && npm run lint",
+    "populate": "nodemon src/utils/populateAliasDB.ts"
   },
   "husky": {
     "hooks": {
