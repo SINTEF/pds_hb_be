@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 import dataInstanceController from '../controllers/dataInstance';
 
 const router = express.Router();
