@@ -6,7 +6,6 @@ import companyRoutes from './routes/company.routes';
 import dataInstanceRoutes from './routes/dataInstance.routes';
 import componentRoutes from './routes/component.routes';
 import pdsHandbookRoutes from './routes/pdsHandbook.routes';
-import indexRoutes from './routes/index.routes';
 import db from './db';
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -22,7 +21,6 @@ app.use(cors());
 require('./middleware/passport');
 
 // Routes
-app.use('/', indexRoutes);
 app.use('/user', userRoutes);
 app.use('/company', companyRoutes);
 app.use('/data-instances', dataInstanceRoutes);

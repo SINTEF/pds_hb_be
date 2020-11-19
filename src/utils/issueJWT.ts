@@ -16,7 +16,7 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
 
   const expiresIn = '1d';
   const SECRET_KEY = process.env.SECRET_KEY;
-  if (!SECRET_KEY) throw Error('Could not find key for ');
+  if (!SECRET_KEY) throw Error('Could not find key');
 
   const payload = {
     sub: _id,
@@ -27,6 +27,7 @@ export const issueJWT = (user: IUserDocument): Ijsonwebtoken => {
     phoneNr,
     companyName,
   };
+
   const signedToken = jsonwebtoken.sign(payload, SECRET_KEY, { expiresIn });
   return {
     token: 'Bearer ' + signedToken,
