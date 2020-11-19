@@ -28,7 +28,7 @@ interface IChecks {
 }
 
 const performChecks = (req: express.Request, checks: IChecks) => {
-  const token = req.headers.bearer;
+  const token = req.headers.authorization?.split(' ')[1];
   const secret_key = process.env.SECRET_KEY;
 
   if (token && typeof token === 'string' && secret_key) {

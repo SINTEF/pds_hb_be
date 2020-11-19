@@ -8,7 +8,7 @@ import componentRoutes from './routes/component.routes';
 import pdsHandbookRoutes from './routes/pdsHandbook.routes';
 import db from './db';
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // // Connect to MongoDB
 db.connect();
@@ -16,6 +16,7 @@ db.connect();
 // Bodyparser (now inlcuded in express)
 app.use(express.json());
 app.use(cors());
+
 // Initialize jwt session with passport
 require('./middleware/passport');
 

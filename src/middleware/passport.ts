@@ -9,7 +9,7 @@ dotenv.config({ path: path.resolve(__dirname, './.env') });
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.SECRET_KEY,
-  //ignoreExpiration: false,
+  ignoreExpiration: false,
 };
 
 passport.use(
