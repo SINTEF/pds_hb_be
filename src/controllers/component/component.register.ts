@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../../db';
 import { ComponentModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
@@ -14,6 +15,9 @@ const register = (req: express.Request, res: express.Response): void => {
     });
     return;
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   const newComponent = new ComponentModel({
     name,

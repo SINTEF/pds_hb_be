@@ -1,6 +1,7 @@
 import express from 'express';
 import db from '../../db';
 import { ComponentModel, ModuleModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const updateModule = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
@@ -12,6 +13,9 @@ const updateModule = async (req: express.Request, res: express.Response): Promis
       message: 'Missing parameters',
     });
   }
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  if (!isAuthorized) return;
 
   const module = await ModuleModel.updateOne({ name: oldName }, { name: newName });
 

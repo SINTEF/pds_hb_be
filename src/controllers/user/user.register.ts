@@ -2,11 +2,12 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import db from '../../db';
 import { UserModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const register = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
   const { username, password, email, phoneNr, companyName, userGroupType } = req.body;
-  if (!username || !password || !email || !userGroupType) {
+  if (!username || !password || !email) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields.',
@@ -22,13 +23,20 @@ const register = async (req: express.Request, res: express.Response): Promise<vo
   );
   if (!passwordHash) return;
 
+  if (userGroupType === 'operator') {
+    const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
+    if (!isAuthorized) return;
+  }
+
+  const newUserGroupType = userGroupType === 'operator' ? 'operator' : 'none';
+
   const newUser = new UserModel({
     username: username.toLowerCase(),
     passwordHash,
     email: email.toLowerCase(),
     phoneNr,
     companyName,
-    userGroupType,
+    userGroupType: newUserGroupType,
   });
 
   newUser

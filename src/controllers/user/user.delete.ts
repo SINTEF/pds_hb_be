@@ -1,11 +1,15 @@
 import express from 'express';
 import db from '../../db';
 import { UserModel } from '../../models';
+import { checkAuthorization } from '../../utils/authorize';
 
 const del = (req: express.Request, res: express.Response): void => {
   db.connect();
 
   const { _id } = req.params;
+
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrUser: true, userId: _id });
+  if (!isAuthorized) return;
 
   UserModel.findOneAndDelete({ _id })
     .then((user) => {
