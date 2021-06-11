@@ -24,10 +24,8 @@ const getAnonymized = (req: express.Request, res: express.Response): void => {
         notifications.map(async (notification) => {
           const newNotification = notification;
           const companyAlias = await getCompanyAlias(notification.company);
-          const facilityAlias = await getFacilityAlias(notification.facility);
 
           newNotification.company = companyAlias?.alias ? companyAlias.alias.toString() : '';
-          newNotification.facility = facilityAlias?.alias || '';
           return newNotification;
         })
       );

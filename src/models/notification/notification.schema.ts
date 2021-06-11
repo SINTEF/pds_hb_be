@@ -6,71 +6,47 @@ export const NotificationSchema = new Schema({
     type: String,
     required: true,
   },
-  facility: {
+
+  notificationNumber: {
     type: String,
     required: true,
   },
-  component: {
-    type: String,
-    required: true,
-  },
-  startDate: {
+
+  detectionDate: {
     type: Date,
-  },
-  endDate: {
-    type: Date,
-  },
-  T: {
-    type: Number,
     required: true,
   },
-  du: {
-    type: Number,
+  equipmentGroupL2: {
+    type: String,
+  },
+  tag: {
+    type: String,
     required: true,
   },
-  populationSize: {
+  shortText: {
+    type: String,
+  },
+  longText: {
+    type: String,
+  },
+  detectionMethod: {
+    type: String,
+  },
+  F1: {
+    type: String,
+  },
+  F2: {
+    type: String,
+  },
+  failureType: {
+    type: String,
+  },
+  testInterval: {
     type: Number,
   },
-  failureRates: {
+  numberOfTests: {
     type: Number,
   },
-  comment: {
-    type: String,
-  },
-  sintefComment: {
-    type: String,
-  },
-  status: {
-    type: String,
-  },
-  L3: {
-    measuringPrinciple: {
-      type: String,
-    },
-    designMountingPrinciple: {
-      type: String,
-    },
-    actuationPrinciple: {
-      type: String,
-    },
-    mediumProperty: {
-      type: String,
-    },
-    dimension: {
-      type: String,
-    },
-    locationEnvironment: {
-      type: String,
-    },
-    application: {
-      type: String,
-    },
-    diagnosticsConfiguration: {
-      type: String,
-    },
-    testMaintenanceMonitoringStrategy: {
-      type: String,
-    },
-  },
+
   created: { type: Date, default: Date.now },
 });

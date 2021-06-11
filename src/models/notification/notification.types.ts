@@ -4,28 +4,18 @@ type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed';
 
 export interface INotification {
   company: string;
-  facility: string;
-  component: string;
-  startDate?: Date;
-  endDate?: Date;
-  T: number;
-  du: number;
-  populationSize?: number;
-  failureRates?: number;
-  comment?: string;
-  sintefComment?: string;
-  status?: TStatus;
-  L3: {
-    measuringPrinciple?: string;
-    designMountingPrinciple?: string;
-    actuationPrinciple?: string;
-    mediumProperty?: string;
-    dimension?: string;
-    locationEnvironment?: string;
-    application?: string;
-    diagnosticsConfiguration?: string;
-    testMaintenanceMonitoringStrategy?: string;
-  };
+  notificationNumber: string;
+  detectionDate: Date;
+  equipmentGroupL2?: string;
+  tag: string;
+  shortText?: string;
+  longText?: string;
+  detectionMethod?: string;
+  F1?: string;
+  F2?: string;
+  failureType?: string;
+  testInterval?: number;
+  numberOfTests?: number;
   created?: Date;
 }
 
