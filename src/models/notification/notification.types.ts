@@ -6,7 +6,7 @@ export interface INotification {
   company: string;
   notificationNumber: string;
   detectionDate: Date;
-  equipmentGroupL2?: string;
+  equipmentGroupL2: string;
   tag: string;
   shortText?: string;
   longText?: string;
@@ -14,7 +14,6 @@ export interface INotification {
   F1?: string;
   F2?: string;
   failureType?: string;
-  testInterval?: number;
   numberOfTests?: number;
   created?: Date;
 }

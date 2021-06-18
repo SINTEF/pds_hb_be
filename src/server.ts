@@ -7,6 +7,7 @@ import dataInstanceRoutes from './routes/dataInstance.routes';
 import componentRoutes from './routes/component.routes';
 import pdsHandbookRoutes from './routes/pdsHandbook.routes';
 import notificationRoutes from './routes/notification.routes';
+import inventoryInstanceRoutes from './routes/inventoryInstance.routes';
 import db from './db';
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ app.use('/components', componentRoutes);
 app.use('/modules', moduleRoutes);
 app.use('/pds-handbook', pdsHandbookRoutes);
 app.use('/notifications', notificationRoutes);
+app.use('/inventoryInstances', inventoryInstanceRoutes);
 
 // 404
 app.use((req, res) => {

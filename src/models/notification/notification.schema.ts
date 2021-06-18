@@ -18,6 +18,7 @@ export const NotificationSchema = new Schema({
   },
   equipmentGroupL2: {
     type: String,
+    required: true,
   },
   tag: {
     type: String,
@@ -40,9 +41,6 @@ export const NotificationSchema = new Schema({
   },
   failureType: {
     type: String,
-  },
-  testInterval: {
-    type: Number,
   },
   numberOfTests: {
     type: Number,

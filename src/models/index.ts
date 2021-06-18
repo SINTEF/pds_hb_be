@@ -10,3 +10,4 @@ export { PdsHandbookModel } from './pdsHandbook/pdsHandbook.model';
 export { FacilityAliasModel } from './facilityAlias/facilityAlias.model';
 export { CompanyAliasModel } from './companyAlias/companyAlias.model';
 export { NotificationModel } from './notification/notification.model';
+export { InventoryInstanceModel } from './inventoryInstance/inventoryInstance.model';

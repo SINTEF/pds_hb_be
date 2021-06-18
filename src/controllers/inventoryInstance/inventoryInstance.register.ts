@@ -1,28 +1,15 @@
 import express from 'express';
 import db from '../../db';
-import { NotificationModel } from '../../models';
+import { InventoryInstanceModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 import { getT } from '../../utils/getT';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const {
-    company,
-    notificationNumber,
-    detectionDate,
-    equipmentGroupL2,
-    tag,
-    shortText,
-    longText,
-    detectionMethod,
-    F1,
-    F2,
-    failureType,
-    numberOfTests,
-  } = req.body;
+  const { company, facility, tag, equipmentGroupL2, vendor, equipmentModel, startDate, L3 } = req.body;
 
-  if (!company || !notificationNumber || !detectionDate || !tag || !equipmentGroupL2) {
+  if (!company || !facility || !startDate || !tag || !equipmentGroupL2) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -33,35 +20,31 @@ const register = (req: express.Request, res: express.Response): void => {
   const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName: company });
   if (!isAuthorized) return;
 
-  const newNotification = new NotificationModel({
+  const newInventoryInstance = new InventoryInstanceModel({
     company,
-    notificationNumber,
-    detectionDate,
-    equipmentGroupL2,
+    facility,
     tag,
-    shortText,
-    longText,
-    detectionMethod,
-    F1,
-    F2,
-    failureType,
-    numberOfTests,
+    equipmentGroupL2,
+    vendor,
+    equipmentModel,
+    startDate,
+    L3,
     status: 'not reviewed',
   });
 
-  newNotification
+  newInventoryInstance
     .save()
-    .then((notification) =>
+    .then((inventoryInstance) =>
       res.status(200).send({
         success: true,
-        message: 'Notification successfully created',
-        data: notification,
+        message: 'Inventory instance successfully created',
+        data: inventoryInstance,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wrong when creating notification.',
+        message: 'Something went wrong when creating Inventory instance.',
         duplicateField: err.keyValue,
         error: err,
       })
