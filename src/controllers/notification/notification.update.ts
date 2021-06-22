@@ -17,7 +17,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     .then((notification) => {
       res.status(200).send({
         success: true,
-        message: 'Data instance successfully updated',
+        message: 'Notification successfully updated',
         data: notification,
       });
     })

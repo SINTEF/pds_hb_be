@@ -3,6 +3,7 @@ import getAll from './inventoryInstance.getAll';
 import register from './inventoryInstance.register';
 import update from './inventoryInstance.update';
 import getAnonymized from './inventoryInstance.getAnonymized';
+import del from './inventoryInstance.delete';
 
 const inventoryInstanceController = {
   getOne,
@@ -10,6 +11,7 @@ const inventoryInstanceController = {
   register,
   update,
   getAnonymized,
+  del,
 };
 
 export default inventoryInstanceController;

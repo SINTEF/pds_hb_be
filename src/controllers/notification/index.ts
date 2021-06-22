@@ -3,6 +3,7 @@ import getAll from './notification.getAll';
 import register from './notification.register';
 import update from './notification.update';
 import getAnonymized from './notification.getAnonymized';
+import del from './notification.delete';
 
 const notificationController = {
   getOne,
@@ -10,6 +11,7 @@ const notificationController = {
   register,
   update,
   getAnonymized,
+  del,
 };
 
 export default notificationController;

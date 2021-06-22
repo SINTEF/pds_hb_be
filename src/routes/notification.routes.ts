@@ -8,5 +8,6 @@ router.get('/anonymized', notificationController.getAnonymized);
 router.get('/:_id', notificationController.getOne);
 router.post('/', notificationController.register);
 router.put('/:_id', notificationController.update);
+router.delete('/:_id', notificationController.del);
 
 export default router;

@@ -8,5 +8,6 @@ router.get('/anonymized', inventoryInstanceController.getAnonymized);
 router.get('/:_id', inventoryInstanceController.getOne);
 router.post('/', inventoryInstanceController.register);
 router.put('/:_id', inventoryInstanceController.update);
+router.delete('/:_id', inventoryInstanceController.del);
 
 export default router;
