@@ -9,7 +9,7 @@ export interface IInventoryInstance {
   equipmentGroupL2: string;
   vendor?: string;
   equipmentModel?: string;
-  startDate: Date;
+  startDate?: Date;
   created?: Date;
   L3: {
     measuringPrinciple?: string;

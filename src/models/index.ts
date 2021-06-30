@@ -11,3 +11,5 @@ export { FacilityAliasModel } from './facilityAlias/facilityAlias.model';
 export { CompanyAliasModel } from './companyAlias/companyAlias.model';
 export { NotificationModel } from './notification/notification.model';
 export { InventoryInstanceModel } from './inventoryInstance/inventoryInstance.model';
+export { PeriodModel } from './period/period.model';
+export { NotificationGroupModel } from './notificationGroup/notificationGroup.model';

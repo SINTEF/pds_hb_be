@@ -1,15 +1,15 @@
 import express from 'express';
 import db from '../../db';
-import { InventoryInstanceModel } from '../../models';
+import { NotificationGroupModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 import { getT } from '../../utils/getT';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, facility, tag, equipmentGroupL2, vendor, equipmentModel, startDate, L3 } = req.body;
+  const { company, name, description } = req.body;
 
-  if (!company || !facility || !tag || !equipmentGroupL2) {
+  if (!company || !name) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -20,31 +20,25 @@ const register = (req: express.Request, res: express.Response): void => {
   const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName: company });
   if (!isAuthorized) return;
 
-  const newInventoryInstance = new InventoryInstanceModel({
+  const newNotificationGroup = new NotificationGroupModel({
     company,
-    facility,
-    tag,
-    equipmentGroupL2,
-    vendor,
-    equipmentModel,
-    startDate,
-    L3,
-    status: 'not reviewed',
+    name,
+    description,
   });
 
-  newInventoryInstance
+  newNotificationGroup
     .save()
-    .then((inventoryInstance) =>
+    .then((notificationGroup) =>
       res.status(200).send({
         success: true,
-        message: 'Inventory instance successfully created',
-        data: inventoryInstance,
+        message: 'NotificationGroup successfully created',
+        data: notificationGroup,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wrong when creating Inventory instance.',
+        message: 'Something went wrong when creating notificationGroup.',
         duplicateField: err.keyValue,
         error: err,
       })

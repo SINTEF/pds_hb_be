@@ -9,7 +9,6 @@ export const InventoryInstanceSchema = new Schema({
 
   startDate: {
     type: Date,
-    required: true,
   },
 
   facility: {

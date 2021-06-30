@@ -10,6 +10,7 @@ export const NotificationSchema = new Schema({
   notificationNumber: {
     type: String,
     required: true,
+    index: true,
   },
 
   detectionDate: {
@@ -42,8 +43,9 @@ export const NotificationSchema = new Schema({
   failureType: {
     type: String,
   },
-  numberOfTests: {
-    type: Number,
+
+  commonError: {
+    type: String,
   },
 
   created: { type: Date, default: Date.now },

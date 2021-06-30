@@ -14,8 +14,8 @@ export interface INotification {
   F1?: string;
   F2?: string;
   failureType?: string;
-  numberOfTests?: number;
   created?: Date;
+  commonError?: string;
 }
 
 export interface INotificationDocument extends INotification, Document {}

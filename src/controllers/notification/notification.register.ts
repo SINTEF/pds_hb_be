@@ -19,7 +19,7 @@ const register = (req: express.Request, res: express.Response): void => {
     F1,
     F2,
     failureType,
-    numberOfTests,
+    commonError,
   } = req.body;
 
   if (!company || !notificationNumber || !detectionDate || !tag || !equipmentGroupL2) {
@@ -45,8 +45,8 @@ const register = (req: express.Request, res: express.Response): void => {
     F1,
     F2,
     failureType,
-    numberOfTests,
     status: 'not reviewed',
+    commonError,
   });
 
   newNotification
