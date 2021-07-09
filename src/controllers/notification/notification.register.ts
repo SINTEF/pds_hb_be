@@ -15,11 +15,15 @@ const register = (req: express.Request, res: express.Response): void => {
     tag,
     shortText,
     longText,
+    workOrder,
+    activityText,
     detectionMethod,
     F1,
     F2,
     failureType,
-    commonError,
+    commonFailure,
+    repeatingFailure,
+    operatorComment,
   } = req.body;
 
   if (!company || !notificationNumber || !detectionDate || !tag || !equipmentGroupL2) {
@@ -41,12 +45,16 @@ const register = (req: express.Request, res: express.Response): void => {
     tag,
     shortText,
     longText,
+    workOrder,
+    activityText,
     detectionMethod,
     F1,
     F2,
     failureType,
-    status: 'not reviewed',
-    commonError,
+    qualityStatus: false,
+    commonFailure,
+    repeatingFailure,
+    operatorComment,
   });
 
   newNotification

@@ -11,6 +11,7 @@ export const NotificationSchema = new Schema({
     type: String,
     required: true,
     index: true,
+    unique: true,
   },
 
   detectionDate: {
@@ -31,6 +32,12 @@ export const NotificationSchema = new Schema({
   longText: {
     type: String,
   },
+  workOrder: {
+    type: String,
+  },
+  activityText: {
+    type: String,
+  },
   detectionMethod: {
     type: String,
   },
@@ -44,8 +51,20 @@ export const NotificationSchema = new Schema({
     type: String,
   },
 
-  commonError: {
+  commonFailure: {
     type: String,
+  },
+
+  repeatingFailure: {
+    type: String,
+  },
+
+  qualityStatus: {
+    type: Boolean,
+  },
+
+  operatorComment: {
+    type: Array,
   },
 
   created: { type: Date, default: Date.now },

@@ -1,28 +1,23 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-export const NotificationGroupSchema = new Schema({
+export const CommentSchema = new Schema({
   company: {
     type: String,
     required: true,
   },
 
-  name: {
+  notificationNumber: {
     type: String,
     required: true,
-    index: true,
-    unique: true,
   },
 
-  description: {
+  content: {
     type: String,
+    required: true,
   },
 
-  type: {
-    type: String,
-  },
-
-  failureMode: {
+  author: {
     type: String,
   },
 

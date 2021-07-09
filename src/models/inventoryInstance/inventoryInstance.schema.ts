@@ -26,6 +26,10 @@ export const InventoryInstanceSchema = new Schema({
     required: true,
   },
 
+  tagDescription: {
+    type: String,
+  },
+
   vendor: {
     type: String,
   },
@@ -35,32 +39,14 @@ export const InventoryInstanceSchema = new Schema({
   },
 
   L3: {
-    measuringPrinciple: {
+    type: {
       type: String,
     },
-    designMountingPrinciple: {
+    medium: {
       type: String,
     },
-    actuationPrinciple: {
-      type: String,
-    },
-    mediumProperty: {
-      type: String,
-    },
-    dimension: {
-      type: String,
-    },
-    locationEnvironment: {
-      type: String,
-    },
-    application: {
-      type: String,
-    },
-    diagnosticsConfiguration: {
-      type: String,
-    },
-    testMaintenanceMonitoringStrategy: {
-      type: String,
+    size: {
+      type: Number,
     },
   },
 

@@ -1,14 +1,14 @@
 import express from 'express';
 import db from '../../db';
-import { InventoryInstanceModel } from '../../models';
+import { CommentModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, facility, tag, tagDescription, equipmentGroupL2, vendor, equipmentModel, startDate, L3 } = req.body;
+  const { company, notificationNumber, content, author } = req.body;
 
-  if (!company || !facility || !tag || !equipmentGroupL2) {
+  if (!company || !notificationNumber || !content) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -19,32 +19,26 @@ const register = (req: express.Request, res: express.Response): void => {
   const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName: company });
   if (!isAuthorized) return;
 
-  const newInventoryInstance = new InventoryInstanceModel({
+  const newComment = new CommentModel({
     company,
-    facility,
-    tag,
-    equipmentGroupL2,
-    vendor,
-    equipmentModel,
-    startDate,
-    L3,
-    tagDescription,
-    status: 'not reviewed',
+    notificationNumber,
+    content,
+    author,
   });
 
-  newInventoryInstance
+  newComment
     .save()
-    .then((inventoryInstance) =>
+    .then((comment) =>
       res.status(200).send({
         success: true,
-        message: 'Inventory instance successfully created',
-        data: inventoryInstance,
+        message: 'Comment successfully created',
+        data: comment,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wrong when creating Inventory instance.',
+        message: 'Something went wrong when creating comment.',
         duplicateField: err.keyValue,
         error: err,
       })

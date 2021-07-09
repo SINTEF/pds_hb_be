@@ -6,21 +6,16 @@ export interface IInventoryInstance {
   company: string;
   facility: string;
   tag: string;
+  tagDescription?: string;
   equipmentGroupL2: string;
   vendor?: string;
   equipmentModel?: string;
   startDate?: Date;
   created?: Date;
   L3: {
-    measuringPrinciple?: string;
-    designMountingPrinciple?: string;
-    actuationPrinciple?: string;
-    mediumProperty?: string;
-    dimension?: string;
-    locationEnvironment?: string;
-    application?: string;
-    diagnosticsConfiguration?: string;
-    testMaintenanceMonitoringStrategy?: string;
+    type?: string;
+    medium?: string;
+    size?: number;
   };
 }
 

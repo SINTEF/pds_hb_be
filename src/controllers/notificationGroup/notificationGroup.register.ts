@@ -2,12 +2,11 @@ import express from 'express';
 import db from '../../db';
 import { NotificationGroupModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
-import { getT } from '../../utils/getT';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, name, description } = req.body;
+  const { company, name, description, type, failureMode } = req.body;
 
   if (!company || !name) {
     res.status(400).send({
@@ -24,6 +23,8 @@ const register = (req: express.Request, res: express.Response): void => {
     company,
     name,
     description,
+    type,
+    failureMode,
   });
 
   newNotificationGroup

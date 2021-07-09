@@ -10,12 +10,17 @@ export interface INotification {
   tag: string;
   shortText?: string;
   longText?: string;
+  workOrder?: string;
+  activityText?: string;
   detectionMethod?: string;
   F1?: string;
   F2?: string;
   failureType?: string;
   created?: Date;
-  commonError?: string;
+  commonFailure?: string;
+  repeatingFailure?: string;
+  qualityStatus?: boolean;
+  operatorComment?: string[];
 }
 
 export interface INotificationDocument extends INotification, Document {}

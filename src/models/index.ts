@@ -13,3 +13,4 @@ export { NotificationModel } from './notification/notification.model';
 export { InventoryInstanceModel } from './inventoryInstance/inventoryInstance.model';
 export { PeriodModel } from './period/period.model';
 export { NotificationGroupModel } from './notificationGroup/notificationGroup.model';
+export { CommentModel } from './comment/comment.model';
