@@ -39,14 +39,52 @@ export const InventoryInstanceSchema = new Schema({
   },
 
   L3: {
-    type: {
+    measuringPrinciple: {
       type: String,
     },
+
+    designMountingPrinciple: {
+      type: String,
+    },
+
+    actuationPrinciple: {
+      type: String,
+    },
+
+    service: {
+      type: String,
+    },
+
     medium: {
       type: String,
     },
-    size: {
-      type: Number,
+
+    dimension: {
+      type: String,
+    },
+
+    locationEnvironment: {
+      type: String,
+    },
+
+    application: {
+      type: String,
+    },
+
+    diagnosticsInternal: {
+      type: String,
+    },
+
+    diagnosticsExternal: {
+      type: String,
+    },
+
+    configuration: {
+      type: String,
+    },
+
+    type: {
+      type: String,
     },
   },
 

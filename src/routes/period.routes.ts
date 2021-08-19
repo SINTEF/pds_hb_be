@@ -8,5 +8,6 @@ router.get('/', periodController.getAll);
 router.get('/:_id', periodController.getOne);
 router.post('/', periodController.register);
 router.put('/:_id', periodController.update);
+router.delete('/:_id', periodController.del);
 
 export default router;

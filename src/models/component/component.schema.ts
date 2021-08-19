@@ -62,6 +62,18 @@ export const ComponentSchema = new Schema({
       type: [String],
       default: undefined,
     },
+    size: {
+      type: [String],
+      default: undefined,
+    },
+    type: {
+      type: [String],
+      default: undefined,
+    },
+    medium: {
+      type: [String],
+      default: undefined,
+    },
   },
   data: {
     type: Array,

@@ -13,9 +13,18 @@ export interface IInventoryInstance {
   startDate?: Date;
   created?: Date;
   L3: {
-    type?: string;
+    measuringPrinciple?: string;
+    designMountingPrinciple?: string;
+    actuationPrinciple?: string;
+    service?: string;
     medium?: string;
-    size?: number;
+    dimension?: string;
+    locationEnvironment?: string;
+    application?: string;
+    diagnosticsInternal?: string;
+    diagnosticsExternal?: string;
+    configuration?: string;
+    type?: string;
   };
 }
 

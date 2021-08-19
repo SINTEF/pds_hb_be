@@ -10,7 +10,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
   const notification = await NotificationModel.findOne({ _id }).then((notification) => notification);
   const companyName = notification?.company;
 
-  const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName });
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
   if (!isAuthorized) return;
 
   NotificationModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })

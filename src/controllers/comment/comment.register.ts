@@ -16,7 +16,7 @@ const register = (req: express.Request, res: express.Response): void => {
     return;
   }
 
-  const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName: company });
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName: company });
   if (!isAuthorized) return;
 
   const newComment = new CommentModel({

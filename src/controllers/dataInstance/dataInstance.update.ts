@@ -10,7 +10,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
   const dataInstance = await DataInstanceModel.findOne({ _id }).then((dataInstance) => dataInstance);
   const companyName = dataInstance?.company;
 
-  const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName });
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
   if (!isAuthorized) return;
 
   DataInstanceModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })

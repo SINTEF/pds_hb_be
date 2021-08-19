@@ -31,19 +31,19 @@ export const DataInstanceSchema = new Schema({
   populationSize: {
     type: Number,
   },
-  failureRates: {
+  failureRate: {
     type: Number,
   },
   comment: {
     type: String,
   },
-  sintefComment: {
+  /*sintefComment: {
     type: String,
-  },
+  },*/
   status: {
     type: String,
   },
-  L3: {
+  /*L3: {
     measuringPrinciple: {
       type: String,
     },
@@ -71,6 +71,6 @@ export const DataInstanceSchema = new Schema({
     testMaintenanceMonitoringStrategy: {
       type: String,
     },
-  },
+  }, */
   created: { type: Date, default: Date.now },
 });

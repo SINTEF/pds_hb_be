@@ -25,7 +25,14 @@ const getAnonymized = (req: express.Request, res: express.Response): void => {
           const newInventoryInstance = inventoryInstance;
           const companyAlias = await getCompanyAlias(inventoryInstance.company);
 
-          newInventoryInstance.company = companyAlias?.alias ? companyAlias.alias.toString() : '';
+          newInventoryInstance.company = '';
+          newInventoryInstance.facility = '';
+          newInventoryInstance.tag = '';
+          newInventoryInstance.vendor = '';
+          newInventoryInstance.equipmentModel = '';
+          newInventoryInstance.startDate = undefined;
+          newInventoryInstance.L3 = {};
+          newInventoryInstance.tagDescription = '';
           return newInventoryInstance;
         })
       );

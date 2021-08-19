@@ -67,5 +67,9 @@ export const NotificationSchema = new Schema({
     type: Array,
   },
 
+  status: {
+    type: String,
+  },
+
   created: { type: Date, default: Date.now },
 });

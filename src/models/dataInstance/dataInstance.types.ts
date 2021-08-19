@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-type TStatus = 'published' | 'approved' | 'not approved' | 'not reviewed';
+type TStatus = 'published' | 'unpublished';
 
 export interface IDataInstance {
   company: string;
@@ -11,11 +11,11 @@ export interface IDataInstance {
   T: number;
   du: number;
   populationSize?: number;
-  failureRates?: number;
+  failureRate?: number;
   comment?: string;
-  sintefComment?: string;
+  //sintefComment?: string;
   status?: TStatus;
-  L3: {
+  /*L3: {
     measuringPrinciple?: string;
     designMountingPrinciple?: string;
     actuationPrinciple?: string;
@@ -26,6 +26,7 @@ export interface IDataInstance {
     diagnosticsConfiguration?: string;
     testMaintenanceMonitoringStrategy?: string;
   };
+  */
   created?: Date;
 }
 

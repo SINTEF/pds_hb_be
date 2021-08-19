@@ -21,6 +21,7 @@ export interface INotification {
   repeatingFailure?: string;
   qualityStatus?: boolean;
   operatorComment?: string[];
+  status?: TStatus;
 }
 
 export interface INotificationDocument extends INotification, Document {}

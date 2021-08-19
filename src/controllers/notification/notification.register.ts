@@ -55,6 +55,7 @@ const register = (req: express.Request, res: express.Response): void => {
     commonFailure,
     repeatingFailure,
     operatorComment,
+    status: 'not reviewed',
   });
 
   newNotification
