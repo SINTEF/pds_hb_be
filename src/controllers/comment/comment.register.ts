@@ -1,14 +1,14 @@
 import express from 'express';
 import db from '../../db';
-import { DataInstanceModel } from '../../models';
+import { CommentModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { company, facility, component, startDate, endDate, du, populationSize, T, failureRate, status /*,comment, L3*/ } = req.body;
+  const { company, notificationNumber, content, author } = req.body;
 
-  if (!company || !facility || !component || !du) {
+  if (!company || !notificationNumber || !content) {
     res.status(400).send({
       success: false,
       message: 'Missing required fields',
@@ -19,32 +19,26 @@ const register = (req: express.Request, res: express.Response): void => {
   const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName: company });
   if (!isAuthorized) return;
 
-  const newDataInstance = new DataInstanceModel({
+  const newComment = new CommentModel({
     company,
-    facility,
-    component,
-    startDate,
-    endDate,
-    T,
-    du,
-    populationSize,
-    failureRate,
-    status,
+    notificationNumber,
+    content,
+    author,
   });
 
-  newDataInstance
+  newComment
     .save()
-    .then((dataInstance) =>
+    .then((comment) =>
       res.status(200).send({
         success: true,
-        message: 'Data instance successfully created',
-        data: dataInstance,
+        message: 'Comment successfully created',
+        data: comment,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wrong when creating data instance.',
+        message: 'Something went wrong when creating comment.',
         duplicateField: err.keyValue,
         error: err,
       })

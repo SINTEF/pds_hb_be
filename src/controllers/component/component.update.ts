@@ -3,13 +3,15 @@ import db from '../../db';
 import { ComponentModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 
-const update = (req: express.Request, res: express.Response): void => {
+const update = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
+
+  const _id = req.params._id;
 
   const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
   if (!isAuthorized) return;
 
-  ComponentModel.findOneAndUpdate({ name: req.params.name }, { $set: req.body }, { useFindAndModify: false, new: true })
+  ComponentModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })
     .then((component) => {
       res.status(200).send({
         success: true,

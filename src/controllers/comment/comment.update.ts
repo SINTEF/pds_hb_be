@@ -1,24 +1,24 @@
 import express from 'express';
 import db from '../../db';
-import { DataInstanceModel } from '../../models';
+import { CommentModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 
 const update = async (req: express.Request, res: express.Response): Promise<void> => {
   db.connect();
 
   const _id = req.params._id;
-  const dataInstance = await DataInstanceModel.findOne({ _id }).then((dataInstance) => dataInstance);
-  const companyName = dataInstance?.company;
+  const comment = await CommentModel.findOne({ _id }).then((comment) => comment);
+  const companyName = comment?.company;
 
   const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
   if (!isAuthorized) return;
 
-  DataInstanceModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })
-    .then((dataInstance) => {
+  CommentModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })
+    .then((comment) => {
       res.status(200).send({
         success: true,
-        message: 'Data instance successfully updated',
-        data: dataInstance,
+        message: 'Comment successfully updated',
+        data: comment,
       });
     })
     .catch((err) => {
@@ -30,5 +30,4 @@ const update = async (req: express.Request, res: express.Response): Promise<void
     });
 };
 
-//
 export default update;

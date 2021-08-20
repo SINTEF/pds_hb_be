@@ -9,3 +9,8 @@ export { ModuleModel } from './module/module.model';
 export { PdsHandbookModel } from './pdsHandbook/pdsHandbook.model';
 export { FacilityAliasModel } from './facilityAlias/facilityAlias.model';
 export { CompanyAliasModel } from './companyAlias/companyAlias.model';
+export { NotificationModel } from './notification/notification.model';
+export { InventoryInstanceModel } from './inventoryInstance/inventoryInstance.model';
+export { PeriodModel } from './period/period.model';
+export { NotificationGroupModel } from './notificationGroup/notificationGroup.model';
+export { CommentModel } from './comment/comment.model';

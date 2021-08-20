@@ -6,6 +6,11 @@ import companyRoutes from './routes/company.routes';
 import dataInstanceRoutes from './routes/dataInstance.routes';
 import componentRoutes from './routes/component.routes';
 import pdsHandbookRoutes from './routes/pdsHandbook.routes';
+import notificationRoutes from './routes/notification.routes';
+import inventoryInstanceRoutes from './routes/inventoryInstance.routes';
+import periodRoutes from './routes/period.routes';
+import notifiicationGroupRoutes from './routes/notificationGroup.routes';
+import commentRoutes from './routes/comment.routes';
 import db from './db';
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,6 +32,11 @@ app.use('/data-instances', dataInstanceRoutes);
 app.use('/components', componentRoutes);
 app.use('/modules', moduleRoutes);
 app.use('/pds-handbook', pdsHandbookRoutes);
+app.use('/notifications', notificationRoutes);
+app.use('/inventoryInstances', inventoryInstanceRoutes);
+app.use('/periods', periodRoutes);
+app.use('/notificationGroups', notifiicationGroupRoutes);
+app.use('/comments', commentRoutes);
 
 // 404
 app.use((req, res) => {

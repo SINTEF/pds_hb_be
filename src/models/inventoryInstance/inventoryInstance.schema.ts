@@ -1,76 +1,92 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-export const DataInstanceSchema = new Schema({
+export const InventoryInstanceSchema = new Schema({
   company: {
     type: String,
     required: true,
   },
+
+  startDate: {
+    type: Date,
+  },
+
   facility: {
     type: String,
     required: true,
   },
-  component: {
+
+  equipmentGroupL2: {
     type: String,
     required: true,
   },
-  startDate: {
-    type: Date,
-  },
-  endDate: {
-    type: Date,
-  },
-  T: {
-    type: Number,
+
+  tag: {
+    type: String,
     required: true,
   },
-  du: {
-    type: Number,
-    required: true,
-  },
-  populationSize: {
-    type: Number,
-  },
-  failureRate: {
-    type: Number,
-  },
-  comment: {
+
+  tagDescription: {
     type: String,
   },
-  /*sintefComment: {
-    type: String,
-  },*/
-  status: {
+
+  vendor: {
     type: String,
   },
-  /*L3: {
+
+  equipmentModel: {
+    type: String,
+  },
+
+  L3: {
     measuringPrinciple: {
       type: String,
     },
+
     designMountingPrinciple: {
       type: String,
     },
+
     actuationPrinciple: {
       type: String,
     },
-    mediumProperty: {
+
+    service: {
       type: String,
     },
+
+    medium: {
+      type: String,
+    },
+
     dimension: {
       type: String,
     },
+
     locationEnvironment: {
       type: String,
     },
+
     application: {
       type: String,
     },
-    diagnosticsConfiguration: {
+
+    diagnosticsInternal: {
       type: String,
     },
-    testMaintenanceMonitoringStrategy: {
+
+    diagnosticsExternal: {
       type: String,
     },
-  }, */
+
+    configuration: {
+      type: String,
+    },
+
+    type: {
+      type: String,
+    },
+  },
+
   created: { type: Date, default: Date.now },
 });

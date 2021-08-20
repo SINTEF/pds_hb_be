@@ -1,6 +1,6 @@
 import express from 'express';
 import db from '../../db';
-import { DataInstanceModel } from '../../models';
+import { NotificationModel } from '../../models';
 import { getFacilityAlias } from '../../utils/getFacilityAlias';
 import { getCompanyAlias } from '../../utils/getCompanyAlias';
 
@@ -18,21 +18,22 @@ const getAnonymized = (req: express.Request, res: express.Response): void => {
     return;
   }
 
-  DataInstanceModel.find(query)
-    .then(async (dataInstances) => {
-      const anonymizedDataInstances = await Promise.all(
-        dataInstances.map(async (dataInstance) => {
-          const newDataInstance = dataInstance;
-          const companyAlias = await getCompanyAlias(dataInstance.company);
-          const facilityAlias = await getFacilityAlias(dataInstance.facility);
+  NotificationModel.find(query)
+    .then(async (notifications) => {
+      const anonymizedNotifications = await Promise.all(
+        notifications.map(async (notification) => {
+          const newNotification = notification;
+          const companyAlias = await getCompanyAlias(notification.company);
 
-          newDataInstance.facility = facilityAlias?.alias || '';
-          return newDataInstance;
+          newNotification.company = companyAlias?.alias ? companyAlias.alias.toString() : '';
+          newNotification.shortText = '';
+          newNotification.longText = '';
+          return newNotification;
         })
       );
       res.status(200).send({
         success: true,
-        data: anonymizedDataInstances,
+        data: anonymizedNotifications,
       });
     })
     .catch((err) =>

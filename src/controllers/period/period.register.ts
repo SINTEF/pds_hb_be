@@ -1,14 +1,14 @@
 import express from 'express';
 import db from '../../db';
-import { ComponentModel } from '../../models';
+import { PeriodModel } from '../../models';
 import { checkAuthorization } from '../../utils/authorize';
 
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { description, equipmentGroupL2 } = req.body;
+  const { company, tag, startDate, endDate, numberOfTests } = req.body;
 
-  if (!equipmentGroupL2) {
+  if (!tag || !startDate || !endDate || !company) {
     res.status(400).send({
       success: false,
       message: 'Required fields missing',
@@ -16,27 +16,30 @@ const register = (req: express.Request, res: express.Response): void => {
     return;
   }
 
-  const isAuthorized = checkAuthorization(req, res, { checkAdmin: true });
+  const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName: company });
   if (!isAuthorized) return;
 
-  const newComponent = new ComponentModel({
-    description,
-    equipmentGroupL2,
+  const newPeriod = new PeriodModel({
+    tag,
+    startDate,
+    endDate,
+    company,
+    numberOfTests,
   });
 
-  newComponent
+  newPeriod
     .save()
-    .then((component) =>
+    .then((period) =>
       res.status(200).send({
         success: true,
-        message: 'Component successfully created',
-        data: component,
+        message: 'Period successfully created',
+        data: period,
       })
     )
     .catch((err) =>
       res.status(409).send({
         success: false,
-        message: 'Something went wrong when trying to register a new component',
+        message: 'Something went wrong when trying to register a new period',
         duplicateField: err.keyValue,
       })
     );
