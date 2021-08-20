@@ -26,7 +26,6 @@ const getAnonymized = (req: express.Request, res: express.Response): void => {
           const companyAlias = await getCompanyAlias(dataInstance.company);
           const facilityAlias = await getFacilityAlias(dataInstance.facility);
 
-          newDataInstance.company = companyAlias?.alias ? companyAlias.alias.toString() : '';
           newDataInstance.facility = facilityAlias?.alias || '';
           return newDataInstance;
         })

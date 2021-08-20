@@ -6,9 +6,9 @@ import { checkAuthorization } from '../../utils/authorize';
 const register = (req: express.Request, res: express.Response): void => {
   db.connect();
 
-  const { name, size, design, revisionDate, remarks, description, definitionOfDU, L3, data, module, equipmentGroup } = req.body;
+  const { description, equipmentGroupL2 } = req.body;
 
-  if (!name || !data || !module || !L3 || !equipmentGroup) {
+  if (!equipmentGroupL2) {
     res.status(400).send({
       success: false,
       message: 'Required fields missing',
@@ -20,17 +20,8 @@ const register = (req: express.Request, res: express.Response): void => {
   if (!isAuthorized) return;
 
   const newComponent = new ComponentModel({
-    name,
-    size,
-    design,
-    revisionDate,
-    remarks,
     description,
-    definitionOfDU,
-    L3,
-    data,
-    module,
-    equipmentGroup,
+    equipmentGroupL2,
   });
 
   newComponent

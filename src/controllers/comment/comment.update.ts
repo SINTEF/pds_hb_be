@@ -10,7 +10,7 @@ const update = async (req: express.Request, res: express.Response): Promise<void
   const comment = await CommentModel.findOne({ _id }).then((comment) => comment);
   const companyName = comment?.company;
 
-  const isAuthorized = checkAuthorization(req, res, { checkCompany: true, companyName });
+  const isAuthorized = checkAuthorization(req, res, { checkAdminOrCompany: true, companyName });
   if (!isAuthorized) return;
 
   CommentModel.findOneAndUpdate({ _id }, { $set: req.body }, { useFindAndModify: false, new: true })
